@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Building
   - FloatingPlatform
+  - Enemy/Projectiles/Bullets
+  - EnemyOrProjectilesOrBullets
+  - HealthKit
   layers:
   - Default
   - TransparentFX
