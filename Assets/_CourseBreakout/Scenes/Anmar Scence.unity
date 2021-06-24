@@ -238,7 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 78
   timeBetweenAttacks: 1
   upForce: 4
@@ -369,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -539,7 +537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 78
   timeBetweenAttacks: 1
   upForce: 4
@@ -1028,7 +1025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -1206,7 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -1242,7 +1237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -1342,7 +1336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -1448,7 +1441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -1873,7 +1865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 5
@@ -1909,7 +1900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -2329,7 +2319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -2539,7 +2528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -3046,6 +3034,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1329943557}
+  - {fileID: 1362092931}
+  - {fileID: 1731522394}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3076,7 +3066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -3618,7 +3607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -3716,7 +3704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 78
   timeBetweenAttacks: 1
   upForce: 4
@@ -4209,7 +4196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -4338,7 +4324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -4867,7 +4852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -4890,7 +4874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -5099,7 +5082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -5122,7 +5104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 50
   timeBetweenAttacks: 1
   upForce: 4
@@ -5220,7 +5201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -5517,7 +5497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 50
   timeBetweenAttacks: 1
   upForce: 4
@@ -5558,7 +5537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 0
@@ -5594,7 +5572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -5904,7 +5881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -6036,7 +6012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -6072,7 +6047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -6469,7 +6443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 78
   timeBetweenAttacks: 1
   upForce: 4
@@ -6505,7 +6478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -6524,6 +6496,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!1 &1362092930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1362092931}
+  - component: {fileID: 1362092933}
+  - component: {fileID: 1362092932}
+  m_Layer: 5
+  m_Name: HealthBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1362092931
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362092930}
+  m_LocalRotation: {x: 0.000011797994, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2997159, y: 0.1705, z: 1}
+  m_Children: []
+  m_Father: {fileID: 677925129}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.001, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -799.6, y: -52}
+  m_SizeDelta: {x: -800, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1362092932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362092930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1362092933
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362092930}
+  m_CullTransparentMesh: 1
 --- !u!4 &1376826428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 854759593735855753, guid: 6ddda9548fdf14a49b1b15369272414e, type: 3}
@@ -6675,7 +6722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -7114,7 +7160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -7137,7 +7182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4.5
@@ -7246,7 +7290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 78
   timeBetweenAttacks: 1
   upForce: 4
@@ -7282,7 +7325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -7425,7 +7467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 3.5
@@ -7461,7 +7502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -13083,7 +13123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -13106,7 +13145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -13142,7 +13180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -13244,7 +13281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -13432,6 +13468,95 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727437723}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1731522393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1731522394}
+  - component: {fileID: 1731522397}
+  - component: {fileID: 1731522396}
+  - component: {fileID: 1731522395}
+  m_Layer: 5
+  m_Name: Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1731522394
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731522393}
+  m_LocalRotation: {x: 0.0000117584705, y: -0.081785895, z: -0.0000009649096, w: 0.9966499}
+  m_LocalPosition: {x: 0, y: 0, z: 9.7}
+  m_LocalScale: {x: 0.3154408, y: 0.13101712, z: 0.90175}
+  m_Children: []
+  m_Father: {fileID: 677925129}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.001, y: -9.382, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -798.6, y: -52}
+  m_SizeDelta: {x: -800, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1731522395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731522393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48012410377a04544abbfdbb73720b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+--- !u!114 &1731522396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731522393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7735849, g: 0.14231044, b: 0.14231044, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1731522397
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731522393}
+  m_CullTransparentMesh: 1
 --- !u!1 &1739237429
 GameObject:
   m_ObjectHideFlags: 0
@@ -13550,7 +13675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -13983,7 +14107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -14006,7 +14129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 50
   timeBetweenAttacks: 1
   upForce: 4
@@ -14104,7 +14226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 10
   timeBetweenAttacks: 1
   upForce: 0
@@ -15562,7 +15683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 0
   range: 70
   timeBetweenAttacks: 1
   upForce: 4
@@ -17496,7 +17616,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 357251139314866580, guid: ef02398095757af4bae5cf98f4c5a120, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ef02398095757af4bae5cf98f4c5a120, type: 3}
 --- !u!1001 &7217802610931262538
 PrefabInstance:

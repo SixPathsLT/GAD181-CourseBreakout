@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 8943468526744948925}
   - component: {fileID: 3008270295578456294}
   - component: {fileID: 2627005047489679911}
-  - component: {fileID: 357251139314866580}
-  - component: {fileID: 216567624853963761}
   m_Layer: 0
   m_Name: EnemyCanon
   m_TagString: Untagged
@@ -98,32 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &357251139314866580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2425741937671207736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 60
-  timeBetweenAttacks: 10
-  upForce: 4
-  projectile: {fileID: 7597222412413306505, guid: ba96ae37030f1e045936af32f549c6b8, type: 3}
---- !u!114 &216567624853963761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2425741937671207736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d385120a96e11748a62e360cdba0d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
