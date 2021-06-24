@@ -5,17 +5,21 @@ using UnityEngine;
 public class ProjectileEnemies : MonoBehaviour
 {
 
-    public float dist;
+    float dist; // doesnt need to be public :)
     public float range;
     public float timeBetweenAttacks;
     public float upForce;
-
 
     public GameObject projectile;
 
     bool isAttacking = false;
 
-    public Transform player;
+   public Transform player;
+
+    private void Start()
+    {
+       
+    }
     // Update is called once per frame
     private void Update()
     {

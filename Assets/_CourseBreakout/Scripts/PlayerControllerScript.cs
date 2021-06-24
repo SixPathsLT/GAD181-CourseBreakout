@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -18,12 +21,19 @@ public class PlayerControllerScript : MonoBehaviour
     bool isGrounded = false;
     float xRotation, yRotation = 0f;
 
+    public Text notificationText;
+
     void Start()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         muzzleLight = GetComponent<Light>();
-    }
 
+       float notifTime = 2;
+       SendNotification("Welcome to Course Breakout!", notifTime);
+       SendNotification("Grab the key to open the door.", 4, notifTime + 1);
+       SendNotification("Press E to Interact with objects.", 4, (notifTime * 2) + 4);
+    }
 
     void Update()
     {
@@ -67,8 +77,7 @@ public class PlayerControllerScript : MonoBehaviour
         bool jump = Input.GetKey("space");
 
         Rigidbody playerBody = GetComponent<Rigidbody>();
-        if (jump && playerBody != null && isGrounded)
-        {
+        if (jump && playerBody != null && isGrounded) {
             isGrounded = false;
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -86,13 +95,26 @@ public class PlayerControllerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fps.transform.position, fps.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             EnemyBattleSys enemy = hit.transform.GetComponent<EnemyBattleSys>();
             if (enemy != null)
             {
                 enemy.TakeDamage(20);
             }
         }
+    }
+
+
+    void SendNotification(string message, float time = 3, float delay = 0) {
+        StartCoroutine(ProcessNotification(message, time, delay));
+    }
+
+    IEnumerator ProcessNotification(string message, float time, float delay) {
+        yield return new WaitForSeconds(delay);
+
+        notificationText.text = message;
+        yield return new WaitForSeconds(time);
+        notificationText.text = "";
     }
 
 

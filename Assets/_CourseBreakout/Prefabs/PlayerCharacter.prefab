@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7214172188004279134}
   m_Layer: 0
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,9 +62,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1ae2d8a87b8b54cac2cbd28204ea99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fps: {fileID: 0}
+  range: 0
+  playerHealth: 300
+  muzzleFlash: {fileID: 0}
+  maxtime: 0.4
   sensitivity: 350
   speed: 10
   jumpForce: 550
+  notificationText: {fileID: 0}
 --- !u!1 &1743997262329443342
 GameObject:
   m_ObjectHideFlags: 0
