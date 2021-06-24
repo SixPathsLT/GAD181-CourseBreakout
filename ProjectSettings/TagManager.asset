@@ -9,6 +9,7 @@ TagManager:
   - Enemy/Projectiles/Bullets
   - EnemyOrProjectilesOrBullets
   - HealthKit
+  - SpeedBoost
   layers:
   - Default
   - TransparentFX

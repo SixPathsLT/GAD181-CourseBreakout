@@ -16,7 +16,7 @@ public class GonePlatform : MonoBehaviour
     void Update()
     {
         // Find out whether current second is odd or even
-        bool oddeven = Mathf.FloorToInt(Time.time) % 10 == 0;
+        bool oddeven = Mathf.FloorToInt(Time.time) % 4 == 2;
 
         // Enable renderer accordingly
         rend.enabled = oddeven;
