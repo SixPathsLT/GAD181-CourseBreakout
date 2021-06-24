@@ -6531,10 +6531,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1001 &305179617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7334,10 +7334,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1 &425020108
 GameObject:
   m_ObjectHideFlags: 0
@@ -7699,10 +7699,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!4 &509441330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5318338882027254390, guid: ef02398095757af4bae5cf98f4c5a120, type: 3}
@@ -7726,10 +7726,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1001 &521357142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8155,10 +8155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1001 &635530253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10265,10 +10265,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1001 &908422485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11530,10 +11530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1001 &1096821269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11860,10 +11860,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!4 &1151839396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5318338882027254390, guid: ef02398095757af4bae5cf98f4c5a120, type: 3}
@@ -11961,10 +11961,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!4 &1183605458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8365628751404358556, guid: 841e708eb5d5bec43a9cdf9a1319e72e, type: 3}
@@ -13916,10 +13916,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1 &1660485145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 836217212419223410, guid: c8e7e7695a8e84647a3aa3f839b8fed6, type: 3}
@@ -13938,10 +13938,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1 &1662400795
 GameObject:
   m_ObjectHideFlags: 0
@@ -15128,10 +15128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1 &1780575127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1507995881912104140, guid: c051218e1134a224397b6c097aa361e5, type: 3}
@@ -15150,10 +15150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!4 &1790611387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8365628751404358556, guid: 841e708eb5d5bec43a9cdf9a1319e72e, type: 3}
@@ -15608,10 +15608,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!4 &1868326073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5318338882027254390, guid: ef02398095757af4bae5cf98f4c5a120, type: 3}
@@ -15762,10 +15762,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1 &1929893026
 GameObject:
   m_ObjectHideFlags: 0
@@ -15892,10 +15892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 5
   upForce: 0
   projectile: {fileID: 146286681}
-  player: {fileID: 0}
+  player: {fileID: 650721798}
 --- !u!1 &2010848953
 GameObject:
   m_ObjectHideFlags: 0
