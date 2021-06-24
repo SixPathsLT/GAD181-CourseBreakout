@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5318338882027254390}
   - component: {fileID: 8943468526744948925}
   - component: {fileID: 3008270295578456294}
+  - component: {fileID: -6211879877335987805}
   - component: {fileID: 2627005047489679911}
   m_Layer: 0
   m_Name: EnemyCanon
@@ -83,6 +84,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-6211879877335987805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2425741937671207736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf0a594335e4bb4589eb1bc5641d533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 60
+  timeBetweenAttacks: 10
+  upForce: 4
+  projectile: {fileID: 7597222412413306505, guid: ba96ae37030f1e045936af32f549c6b8, type: 3}
+  player: {fileID: 0}
 --- !u!65 &2627005047489679911
 BoxCollider:
   m_ObjectHideFlags: 0

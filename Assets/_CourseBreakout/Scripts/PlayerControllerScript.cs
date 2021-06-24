@@ -29,10 +29,10 @@ public class PlayerControllerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         muzzleLight = GetComponent<Light>();
 
-      /* float notifTime = 2;
+       float notifTime = 2;
        SendNotification("Welcome to Course Breakout!", notifTime);
        SendNotification("Grab the key to open the door.", 4, notifTime + 1);
-       SendNotification("Press E to Interact with objects.", 4, (notifTime * 2) + 4);*/
+       SendNotification("Press E to Interact with objects.", 4, (notifTime * 2) + 4);
     }
 
     void Update()
@@ -105,7 +105,7 @@ public class PlayerControllerScript : MonoBehaviour
     }
 
 
-  /*  void SendNotification(string message, float time = 3, float delay = 0) {
+   void SendNotification(string message, float time = 3, float delay = 0) {
         StartCoroutine(ProcessNotification(message, time, delay));
     }
 
@@ -115,7 +115,7 @@ public class PlayerControllerScript : MonoBehaviour
         notificationText.text = message;
         yield return new WaitForSeconds(time);
         notificationText.text = "";
-    }*/
+    }
  
 
 }
