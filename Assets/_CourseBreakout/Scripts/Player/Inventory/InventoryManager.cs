@@ -26,9 +26,9 @@ public class InventoryManager : MonoBehaviour
 
     public void SelectItem(int slotIndex)
     {
-        if (slotIndex >= MAX_ITEMS || selectedSlotIndex == slotIndex)
+        if (slotIndex >= MAX_ITEMS || selectedSlotIndex == slotIndex || slotIndex < 0)
             return;
-
+        
         InventorySlot slot = slots[slotIndex];
 
         if (slot.GetItem() == null)
@@ -46,6 +46,7 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (var slot in slots)
         {
+            Debug.Log("ok");
             if (slot.GetItem() == null) {
                 slot.SetItem(item);
                 break;
@@ -54,7 +55,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void AddItem(Item item, int slotIndex) {
-        if (slotIndex >= MAX_ITEMS)
+        if (slotIndex >= MAX_ITEMS || slotIndex < 0)
             return;
 
         InventorySlot slot = slots[slotIndex];

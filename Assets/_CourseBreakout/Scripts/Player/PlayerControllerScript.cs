@@ -50,9 +50,13 @@ public class PlayerControllerScript : MonoBehaviour
         muzzleLight = GetComponent<Light>();
 
         
-        notifications.SendNotification("Welcome to Course Breakout!", 2);
+        notifications.SendNotification("Welcome to Course Breakout!", 3);
+        notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
 
-        
+        Invoke("EndTutorial", 12f);
+    }
+
+    void EndTutorial() {
         inventoryManager.AddItem(grappleHook.GetComponent<Item>());
         inventoryManager.AddItem(companionHeal.GetComponent<Item>());
         inventoryManager.AddItem(companionShield.GetComponent<Item>());
@@ -60,14 +64,10 @@ public class PlayerControllerScript : MonoBehaviour
 
         inventoryManager.SelectItem(0);
 
-        Invoke("EndTutorial", 12f);
-    }
-
-    void EndTutorial() {
         inTutorial = false;
         
         notifications.SendNotification("Grab the key to open the door.", 4);
-        notifications.SendNotification("Press E to Interact with objects.", 4, 5);
+        notifications.SendNotification("Press E to Interact with objects.", 4, 4);
     }
 
     void Update()
