@@ -29,12 +29,15 @@ public class PlayerControllerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         muzzleLight = GetComponent<Light>();
 
-       float notifTime = 2;
-       SendNotification("Welcome to Course Breakout!", notifTime);
-       SendNotification("Grab the key to open the door.", 4, notifTime + 1);
-       SendNotification("Press E to Interact with objects.", 4, (notifTime * 2) + 4);
-    }
+        /*   float notifTime = 2;
+           SendNotification("Welcome to Course Breakout!", notifTime);
+           SendNotification("Grab the key to open the door.", 4, notifTime + 1);
+           SendNotification("Press E to Interact with objects.", 4, (notifTime * 2) + 4);
+        }*/
 
+
+
+    }
     void Update()
     {
         //player movement
@@ -77,7 +80,8 @@ public class PlayerControllerScript : MonoBehaviour
         bool jump = Input.GetKey("space");
 
         Rigidbody playerBody = GetComponent<Rigidbody>();
-        if (jump && playerBody != null && isGrounded) {
+        if (jump && playerBody != null && isGrounded)
+        {
             isGrounded = false;
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -90,7 +94,7 @@ public class PlayerControllerScript : MonoBehaviour
     }
 
 
-    public void Shoot()
+    void Shoot()
     {
         RaycastHit hit;
         if (Physics.Raycast(fps.transform.position, fps.transform.forward, out hit, range))
@@ -105,17 +109,15 @@ public class PlayerControllerScript : MonoBehaviour
     }
 
 
-   void SendNotification(string message, float time = 3, float delay = 0) {
-        StartCoroutine(ProcessNotification(message, time, delay));
-    }
+    /*void SendNotification(string message, float time = 3, float delay = 0) {
+          StartCoroutine(ProcessNotification(message, time, delay));
+      }
 
-    IEnumerator ProcessNotification(string message, float time, float delay) {
-        yield return new WaitForSeconds(delay);
+      IEnumerator ProcessNotification(string message, float time, float delay) {
+          yield return new WaitForSeconds(delay);
 
-        notificationText.text = message;
-        yield return new WaitForSeconds(time);
-        notificationText.text = "";
-    }
- 
-
+          notificationText.text = message;
+          yield return new WaitForSeconds(time);
+          notificationText.text = "";
+      }*/
 }

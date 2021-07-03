@@ -8,6 +8,10 @@ public class PlayerCheckpoint : MonoBehaviour
 
     Vector3 spawnPoint;
 
+    public ParticleSystem HealthVFX;
+    public ParticleSystem HealthVFX2;
+    public ParticleSystem HealthVFX3;
+
     public float playerHealth = 200;
 
     // Start is called before the first frame update
@@ -30,6 +34,7 @@ public class PlayerCheckpoint : MonoBehaviour
             Debug.Log("Checkpoint Active");
             playerHealth = 200;
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +48,19 @@ public class PlayerCheckpoint : MonoBehaviour
         {
             playerHealth += 50f;
             Destroy(other.gameObject);
+            HealthVFX.Play();
+        }
+        if (other.gameObject.CompareTag("HealthKit2"))
+        {
+            playerHealth += 50f;
+            Destroy(other.gameObject);
+            HealthVFX2.Play();
+        }
+        if (other.gameObject.CompareTag("HealthKit3"))
+        {
+            playerHealth += 50f;
+            Destroy(other.gameObject);
+            HealthVFX3.Play();
         }
     }
 

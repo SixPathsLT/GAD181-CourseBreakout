@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBattleSys : MonoBehaviour
 {
+    public ParticleSystem deathVFX;
     public float health = 100;
     public void TakeDamage(float amount)
     {
@@ -11,6 +12,7 @@ public class EnemyBattleSys : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            deathVFX.Play();
         }
     }
     void Die()
