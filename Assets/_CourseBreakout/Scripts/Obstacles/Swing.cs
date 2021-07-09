@@ -11,7 +11,7 @@ public class Swing : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 500);
+        rb.AddForce(transform.forward * 1800);
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class Swing : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= 5) 
         {
-            rb.AddForce(transform.forward * 100);
+            rb.AddForce(transform.forward * 800);
             Debug.Log("EEEEE");
             timer = 0;
         }
