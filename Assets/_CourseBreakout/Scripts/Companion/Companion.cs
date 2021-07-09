@@ -5,7 +5,7 @@ using UnityEngine;
 public class Companion : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform player;
+    public GameObject player;
     public float speed;
     public float spinSpeed;
     public float healSpinSpeed;
@@ -16,13 +16,12 @@ public class Companion : MonoBehaviour
 
     
     bool spinYN = false;
-    bool shieldPlayer;
+    public bool shieldPlayer;
 
     public ParticleSystem healthVFX;
 
     bool isHealing = false;
 
-    PlayerCheckpoint Player;
    public GameObject shieldObject;
 
     void Start()
@@ -38,7 +37,7 @@ public class Companion : MonoBehaviour
             shieldObject.SetActive(true);
             Invoke(nameof(ShieldEnd), 5);
             shieldScreen.SetActive(true);
-            player.GetComponent<Collider>().isTrigger = true;
+       //     player.GetComponent<Collider>().isTrigger = true;
         }
     }
 
@@ -56,14 +55,26 @@ public class Companion : MonoBehaviour
             ActivateShield();
         }
         Shield();
-      // transform.RotateAround(player.transform.position, Vector3.up, spinSpeed * Time.deltaTime);
-        //transform.Rotate(new Vector3(20, 120, 0) * speed * Time.deltaTime);
       if (Input.GetKey(KeyCode.H))
       {
             ActivateHeal();
       }
         CompHeal();
         LookStraight();
+
+       /* timer += Time.deltaTime;
+        if (timer <= 1) 
+        {
+            transform.Translate(transform.up * -1);
+        }
+        if (timer <= 2)
+        {
+            transform.Translate(transform.up * 1);
+        }
+        else 
+        {
+            timer = 0;
+        }*/
     }
     public void LookStraight() 
     {
@@ -86,7 +97,6 @@ public class Companion : MonoBehaviour
         if (shieldPlayer) 
         {
             transform.RotateAround(player.transform.position, Vector3.up, spinSpeed * Time.deltaTime);
-
         }
     }
     void ShieldEnd() 
@@ -95,9 +105,9 @@ public class Companion : MonoBehaviour
 
         shieldObject.SetActive(false);
         shieldScreen.SetActive(false);
-        transform.position = player.position;
+        transform.position = player.transform.position;
         transform.position += player.transform.forward * 1.3f + player.transform.right * 0.7f + transform.up * 0.5f;
-        transform.rotation = player.rotation;
+        transform.rotation = player.transform.rotation;
         player.GetComponent<Collider>().isTrigger = false;
     }
 
@@ -105,15 +115,19 @@ public class Companion : MonoBehaviour
     {
         if (isHealing)
         {
-           // Player.playerHealth += amount;
+            player.GetComponent<PlayerCheckpoint>().playerHealth += 0.5f;
             Invoke(nameof(StopHeal), 4);
             transform.Rotate(new Vector3(0, 130, 0) * healSpinSpeed * Time.deltaTime);
+            if (player.GetComponent<PlayerCheckpoint>().playerHealth >= 300) 
+            {
+                player.GetComponent<PlayerCheckpoint>().playerHealth = 300;
+            }
         }
     }
 
     void StopHeal() 
     {
         isHealing = false;
-        transform.rotation = player.rotation;
+        transform.rotation = player.transform.rotation;
     }
 }

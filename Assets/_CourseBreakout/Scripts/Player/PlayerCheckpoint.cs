@@ -14,6 +14,8 @@ public class PlayerCheckpoint : MonoBehaviour
 
     public float playerHealth = 200;
 
+    public Companion companion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,16 +67,18 @@ public class PlayerCheckpoint : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets")) 
+        if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets") && companion.shieldPlayer == false) 
         {
             EnemyDamage(20);
         }
     }
-    public void EnemyDamage(float amount) 
-    {
-        playerHealth -= amount;
+    public void EnemyDamage(float amount)
+    { 
+
+          playerHealth -= amount;
+        
     }
 }
 

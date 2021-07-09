@@ -32,6 +32,7 @@ public class ProjectileEnemies : MonoBehaviour
         {
             ResetAttack();
         }
+       
     }
 
     public void AttackPlayer() 
@@ -48,6 +49,9 @@ public class ProjectileEnemies : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+
+
     public void ResetAttack() 
     {
         isAttacking = false;

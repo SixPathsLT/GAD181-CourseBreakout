@@ -33,6 +33,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     InventoryManager inventoryManager;
 
+    public GameObject blueShield;
+
     KeyCode[] inventoryKeys = {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
     };
@@ -53,7 +55,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
 
-        Invoke("EndTutorial", 12f);
+        Invoke("EndTutorial", 1f);
     }
 
     void EndTutorial() {
@@ -133,12 +135,12 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
     }
-
-
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
     }
+
+
 
 
     void Shoot()

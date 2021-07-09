@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 60
-  timeBetweenAttacks: 10
+  timeBetweenAttacks: 1
   upForce: 4
   projectile: {fileID: 7597222412413306505, guid: ba96ae37030f1e045936af32f549c6b8, type: 3}
   player: {fileID: 0}
