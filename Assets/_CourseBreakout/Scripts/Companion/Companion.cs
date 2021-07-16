@@ -13,6 +13,7 @@ public class Companion : MonoBehaviour
     
     float timer;
     float maxtime = 8f;
+    float otherTimer;
 
     
     bool spinYN = false;
@@ -62,19 +63,19 @@ public class Companion : MonoBehaviour
         CompHeal();
         LookStraight();
 
-       /* timer += Time.deltaTime;
-        if (timer <= 1) 
+        otherTimer += Time.deltaTime;
+        if (otherTimer <= 1) 
         {
-            transform.Translate(transform.up * -1);
+            transform.Translate(Vector3.up * 0.4f * Time.deltaTime);
         }
-        if (timer <= 2)
+        if (otherTimer <= 2)
         {
-            transform.Translate(transform.up * 1);
+            transform.Translate(Vector3.down * 0.2f * Time.deltaTime);
         }
         else 
         {
-            timer = 0;
-        }*/
+            otherTimer = 0;
+        }
     }
     public void LookStraight() 
     {

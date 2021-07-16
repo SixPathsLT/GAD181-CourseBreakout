@@ -22,7 +22,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     public float sensitivity, speed, jumpForce;
 
-    bool isGrounded = false;
+    public bool isGrounded = false;
     float xRotation, yRotation = 0f;
 
     public Text notificationText;
@@ -108,7 +108,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            Banana();
             muzzleFlash.Play();
             muzzleLight.enabled = true;
         }
@@ -143,7 +143,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 
 
-    void Shoot()
+    void Banana()
     {
         RaycastHit hit;
         if (Physics.Raycast(fps.transform.position, fps.transform.forward, out hit, range))
