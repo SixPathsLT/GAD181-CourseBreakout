@@ -108,7 +108,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Banana();
+            Shoot();
             muzzleFlash.Play();
             muzzleLight.enabled = true;
         }
@@ -131,7 +131,7 @@ public class PlayerControllerScript : MonoBehaviour
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             if (playerBody.velocity.magnitude > maxHeight) {
-                playerBody.velocity = new Vector3(0, maxHeight, 0);
+                playerBody.velocity = new Vector3(0, maxHeight, playerBody.velocity.y);
             }
         }
     }
@@ -143,7 +143,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 
 
-    void Banana()
+    void Shoot()
     {
         RaycastHit hit;
         if (Physics.Raycast(fps.transform.position, fps.transform.forward, out hit, range))
