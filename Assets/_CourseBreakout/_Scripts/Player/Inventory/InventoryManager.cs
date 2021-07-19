@@ -46,7 +46,6 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (var slot in slots)
         {
-            Debug.Log("ok");
             if (slot.GetItem() == null) {
                 slot.SetItem(item);
                 break;
