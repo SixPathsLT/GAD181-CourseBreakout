@@ -66,11 +66,11 @@ public class Companion : MonoBehaviour
         otherTimer += Time.deltaTime;
         if (otherTimer <= 1) 
         {
-            transform.Translate(Vector3.up * 0.4f * Time.deltaTime);
+            transform.Translate(Vector3.down * 0.4f * Time.deltaTime);
         }
         if (otherTimer <= 2)
         {
-            transform.Translate(Vector3.down * 0.2f * Time.deltaTime);
+            transform.Translate(Vector3.up * 0.2f * Time.deltaTime);
         }
         else 
         {

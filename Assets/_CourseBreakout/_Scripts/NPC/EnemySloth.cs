@@ -10,19 +10,15 @@ public class EnemySloth : MonoBehaviour
     public float range;
     public float speed;
 
-    public Transform patrolPoint;
-    Vector3 enemyReached;
-    bool isPatrolling = true;
 
     // Update is called once per frame
     void Update()
     {
-        enemyReached = transform.position - patrolPoint.position;
+       
         distance = Vector3.Distance(transform.position, player.position);
         if (distance >= range) 
         {
-            Patrol();
-            isPatrolling = true;
+           // Patrol();
         }
         if (distance <= range) 
         {
@@ -30,7 +26,7 @@ public class EnemySloth : MonoBehaviour
         }
         else 
         {
-            Patrol();
+          //  Patrol();
         }
     }
 
@@ -45,16 +41,24 @@ public class EnemySloth : MonoBehaviour
         }
     }
 
-    void Patrol() 
+    private void OnCollisionEnter(Collision collision)
     {
-        if (isPatrolling)
+        if (collision.gameObject.CompareTag("Player")) 
         {
-            transform.LookAt(patrolPoint);
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            if (enemyReached.z <= 1) 
-            {
-                isPatrolling = false;
-            }
+            player.GetComponent<PlayerCheckpoint>().playerHealth -= 10f;
         }
-    } 
+    }
+
+    /*  void Patrol() 
+      {
+          if (isPatrolling)
+          {
+              transform.LookAt(patrolPoint);
+              transform.Translate(Vector3.forward * speed * Time.deltaTime);
+              if (enemyReached.z <= 1) 
+              {
+                  isPatrolling = false;
+              }
+          }
+      } */
 }
