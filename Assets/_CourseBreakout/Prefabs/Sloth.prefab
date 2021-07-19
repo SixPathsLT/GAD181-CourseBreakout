@@ -602,7 +602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   distance: 0
-  range: 5
+  range: 15
   speed: 2
 --- !u!114 &2697265129262902999
 MonoBehaviour:
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 0}
-  health: 150
+  health: 120
 --- !u!54 &4223693249253458263
 Rigidbody:
   m_ObjectHideFlags: 0
