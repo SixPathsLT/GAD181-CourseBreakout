@@ -12,7 +12,7 @@ public class ProjectileEnemies : MonoBehaviour
 
     public GameObject projectile;
 
-    bool isAttacking = false;
+   public bool isAttacking = false;
 
    public Transform player;
 

@@ -13,6 +13,9 @@ TagManager:
   - HealthKit2
   - HealthKit3
   - HealthKit4
+  - Checkpoint
+  - BombBody
+  - Poison
   layers:
   - Default
   - TransparentFX
