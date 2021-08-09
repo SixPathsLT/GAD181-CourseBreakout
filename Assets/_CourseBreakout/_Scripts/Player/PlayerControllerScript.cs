@@ -12,6 +12,7 @@ public class PlayerControllerScript : MonoBehaviour
     public int range;
 
     public float playerHealth = 300;
+    PlayerCheckpoint relive;
 
     public ParticleSystem muzzleFlash;
     private Light muzzleLight;
@@ -21,6 +22,8 @@ public class PlayerControllerScript : MonoBehaviour
     public float maxHeight = 3f;
 
     public float sensitivity, speed, jumpForce;
+
+    bool isPoisoned;
 
     public bool isGrounded = false;
     float xRotation, yRotation = 0f;
@@ -34,6 +37,14 @@ public class PlayerControllerScript : MonoBehaviour
     InventoryManager inventoryManager;
 
     public GameObject blueShield;
+
+    public Companion companion;
+
+    public ParticleSystem HealthVFX;
+    public ParticleSystem HealthVFX2;
+    public ParticleSystem HealthVFX3;
+
+
 
     KeyCode[] inventoryKeys = {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
@@ -55,7 +66,10 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
 
-        Invoke("EndTutorial", 15f);
+        Invoke("EndTutorial", 1f);
+
+        relive = GetComponent<PlayerCheckpoint>();
+
     }
 
     void EndTutorial() {
@@ -118,6 +132,14 @@ public class PlayerControllerScript : MonoBehaviour
             timer = 0;
         }
         timer += Time.deltaTime;
+       
+        if (playerHealth <= 0) 
+        {
+           //GetComponent<PlayerCheckpoint>().Respawn();
+           relive.Respawn();
+           playerHealth = 300;
+        }
+        PoisonPlayer();
     }
 
     void FixedUpdate()
@@ -138,8 +160,59 @@ public class PlayerControllerScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
+        if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets") && companion.shieldPlayer == false)
+        {
+            EnemyDamage(20);
+        }
+        if (collision.gameObject.CompareTag("Poison") && companion.shieldPlayer == false)
+        {
+            ActivatePoison();
+            Destroy(collision.gameObject);
+        }
     }
-
+    public void EnemyDamage(float amount)
+    {
+        playerHealth -= amount;
+    }
+   // Everything below this is for the Poison Effect
+    void ActivatePoison()
+    {
+        isPoisoned = true;
+        Invoke(nameof(PoisonEnd), 3);
+    }
+    void PoisonPlayer()
+    {
+        if (isPoisoned)
+        {
+            playerHealth -= 0.2f;
+        }
+    }
+    void PoisonEnd()
+    {
+        isPoisoned = false;
+    }
+    // Until here
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("HealthKit"))
+        {
+            playerHealth += 50f;
+            Destroy(other.gameObject);
+            HealthVFX.Play();
+        }
+        if (other.gameObject.CompareTag("HealthKit2"))
+        {
+            playerHealth += 50f;
+            Destroy(other.gameObject);
+            HealthVFX2.Play();
+        }
+        if (other.gameObject.CompareTag("HealthKit3"))
+        {
+            playerHealth += 50f;
+            Destroy(other.gameObject);
+            HealthVFX3.Play();
+        }
+    }
 
 
 
@@ -148,12 +221,17 @@ public class PlayerControllerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fps.transform.position, fps.transform.forward, out hit, range))
         {
+           if (hit.collider.CompareTag("BombBody"))
+           {
+                GetComponentInParent<EnemyBomber>().Explode();
+           }
+               
             //Debug.Log(hit.transform.name);
             EnemyBattleSys enemy = hit.transform.GetComponent<EnemyBattleSys>();
             if (enemy != null)
             {
                 enemy.TakeDamage(20);
-            }
+            }   
         }
     }
 

@@ -82,7 +82,6 @@ public class Companion : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= maxtime && !spinYN)
         { 
-
             transform.Rotate(new Vector3(0, 120, 0) * speed * Time.deltaTime);
             Invoke(nameof(StopSpin), 2);
         }
@@ -116,12 +115,12 @@ public class Companion : MonoBehaviour
     {
         if (isHealing)
         {
-            player.GetComponent<PlayerCheckpoint>().playerHealth += 0.5f;
+            player.GetComponent<PlayerControllerScript>().playerHealth += 0.5f;
             Invoke(nameof(StopHeal), 4);
             transform.Rotate(new Vector3(0, 130, 0) * healSpinSpeed * Time.deltaTime);
-            if (player.GetComponent<PlayerCheckpoint>().playerHealth >= 300) 
+            if (player.GetComponent<PlayerControllerScript>().playerHealth >= 300) 
             {
-                player.GetComponent<PlayerCheckpoint>().playerHealth = 300;
+                player.GetComponent<PlayerControllerScript>().playerHealth = 300;
             }
         }
     }

@@ -16,17 +16,9 @@ public class EnemySloth : MonoBehaviour
     {
        
         distance = Vector3.Distance(transform.position, player.position);
-        if (distance >= range) 
-        {
-           // Patrol();
-        }
         if (distance <= range) 
         {
             AttackPlayer();
-        }
-        else 
-        {
-          //  Patrol();
         }
     }
 
@@ -37,7 +29,6 @@ public class EnemySloth : MonoBehaviour
         {
             transform.LookAt(player);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
         }
     }
 
@@ -45,20 +36,7 @@ public class EnemySloth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            player.GetComponent<PlayerCheckpoint>().playerHealth -= 10f;
+            player.GetComponent<PlayerControllerScript>().playerHealth -= 10f;
         }
     }
-
-    /*  void Patrol() 
-      {
-          if (isPatrolling)
-          {
-              transform.LookAt(patrolPoint);
-              transform.Translate(Vector3.forward * speed * Time.deltaTime);
-              if (enemyReached.z <= 1) 
-              {
-                  isPatrolling = false;
-              }
-          }
-      } */
 }

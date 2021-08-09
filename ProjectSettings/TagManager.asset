@@ -4,30 +4,36 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Building
-  - FloatingPlatform
+  - Death
+  - Bonus
+  - Players
+  - Spawnpoint
+  - Manager
+  - BombBody
   - Enemy/Projectiles/Bullets
+  - Poison
+  - Building
+  - SpeedBoost
+  - FloatingPlatform
   - EnemyOrProjectilesOrBullets
   - HealthKit
-  - SpeedBoost
-  - HealthKit2
   - HealthKit3
-  - HealthKit4
+  - HealthKit2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Grappleable
   - Water
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - LocalPlayer
+  - Player
+  - Projectile
+  - ProjectileNon
+  - Invisible
   - 
   - 
   - 

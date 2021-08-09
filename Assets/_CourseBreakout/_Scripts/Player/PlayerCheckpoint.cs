@@ -12,9 +12,9 @@ public class PlayerCheckpoint : MonoBehaviour
     public ParticleSystem HealthVFX2;
     public ParticleSystem HealthVFX3;
 
-    public float playerHealth = 200;
+ //   public float playerHealth = 200;
 
-    public Companion companion;
+ //   public Companion companion;
 
     // Start is called before the first frame update
     void Start()
@@ -27,27 +27,29 @@ public class PlayerCheckpoint : MonoBehaviour
     {
         if (gameObject.transform.position.y < -20f)
         {
+             Respawn();
+          /*  GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
+            gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
+            Debug.Log("Checkpoint Active");*/
+        }
+       /* else if (playerHealth <= 0) 
+        {
+            // Respawn();
             GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
             gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
             Debug.Log("Checkpoint Active");
-        }
-        else if (playerHealth <= 0) 
-        {
-            gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
-            Debug.Log("Checkpoint Active");
-            playerHealth = 200;
-        }
+        }*/
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Checkpoint"))
+        if (other.gameObject.CompareTag("Player"))
         {
             spawnPoint = other.gameObject.transform.position;
             Destroy(other.gameObject);
         }
-        if (other.gameObject.CompareTag("HealthKit"))
+   /*     if (other.gameObject.CompareTag("HealthKit"))
         {
             playerHealth += 50f;
             Destroy(other.gameObject);
@@ -64,10 +66,10 @@ public class PlayerCheckpoint : MonoBehaviour
             playerHealth += 50f;
             Destroy(other.gameObject);
             HealthVFX3.Play();
-        }
+        }*/
     }
 
-    public void OnCollisionEnter(Collision collision)
+   /* public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets") && companion.shieldPlayer == false) 
         {
@@ -76,11 +78,15 @@ public class PlayerCheckpoint : MonoBehaviour
     }
     public void EnemyDamage(float amount)
     { 
-
-          playerHealth -= amount;
-        
+          playerHealth -= amount;        
+    }*/
+    public void Respawn() 
+    {
+        GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
+        gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
+        Debug.Log("Checkpoint Active");
     }
-}
+} 
 
 
 // for our personal reference:
