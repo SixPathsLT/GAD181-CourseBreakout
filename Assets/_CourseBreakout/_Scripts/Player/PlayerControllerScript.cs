@@ -46,6 +46,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 
 
+
     KeyCode[] inventoryKeys = {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
     };
@@ -66,10 +67,10 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
 
-        Invoke("EndTutorial", 1f);
+        Invoke("EndTutorial", 15f);
 
         relive = GetComponent<PlayerCheckpoint>();
-
+        //boom = GetComponent<EnemyBomber>();
     }
 
     void EndTutorial() {
@@ -221,10 +222,12 @@ public class PlayerControllerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fps.transform.position, fps.transform.forward, out hit, range))
         {
-           if (hit.collider.CompareTag("BombBody"))
-           {
-                GetComponentInParent<EnemyBomber>().Explode();
-           }
+            if (hit.collider.CompareTag("BombBody"))
+            {
+                hit.collider.gameObject.GetComponentInParent<EnemyBomber>().Explode();
+                // GetComponentInParent<EnemyBomber>().Explode(); 
+            }
+            
                
             //Debug.Log(hit.transform.name);
             EnemyBattleSys enemy = hit.transform.GetComponent<EnemyBattleSys>();

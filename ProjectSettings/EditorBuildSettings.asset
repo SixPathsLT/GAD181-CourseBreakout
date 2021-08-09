@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Force/Scenes/Lobby.unity
-    guid: 92797757800c3d444abe9fa0bdab0caf
-  - enabled: 1
-    path: Assets/Force/Scenes/Game.unity
-    guid: f73788b023716374d9531740544ec075
+    path: Assets/_CourseBreakout/_Scenes/Main Scene(backup).unity
+    guid: dd669bc28c8616d47a856475530c73ea
   m_configObjects: {}

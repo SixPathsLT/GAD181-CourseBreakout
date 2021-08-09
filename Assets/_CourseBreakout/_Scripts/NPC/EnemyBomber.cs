@@ -12,6 +12,10 @@ public class EnemyBomber : MonoBehaviour
     public float range;
     public float speed;
 
+    float timer;
+
+    public GameObject boomer;
+
     void Update()
     {
         distance = Vector3.Distance(transform.position, player.position);
@@ -19,11 +23,14 @@ public class EnemyBomber : MonoBehaviour
         {
             EngagePlayer();
         }
+        else
+        {
+            boomer.GetComponent<Renderer>().material.color = Color.black;
+        }
         if (distance <= 3)
         {
             Explode();
         }
-
     }
 
     public void EngagePlayer()
@@ -33,7 +40,21 @@ public class EnemyBomber : MonoBehaviour
                 transform.LookAt(player);
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
          }
-       // GetComponentInChildren<Renderer>().material.color = new Color(1, 0, 0, 1);
+        timer += Time.deltaTime;
+        //var colorWarn = boomer.GetComponent<Renderer>().material.color;
+        if (timer <= 0.5f)
+        {
+            boomer.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if (timer <= 1f)
+        {
+            boomer.GetComponent<Renderer>().material.color = Color.black;
+        }
+        else
+        {
+            timer = 0;
+        }
+        //boomer.GetComponent<Renderer>().material.color = new Color(255, 255, 255, 255);
     }
     public void Explode()
     {

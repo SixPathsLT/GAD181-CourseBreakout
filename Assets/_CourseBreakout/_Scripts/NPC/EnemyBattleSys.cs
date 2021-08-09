@@ -24,4 +24,11 @@ public class EnemyBattleSys : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+
+        }
+    }*/
 }
