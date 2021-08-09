@@ -67,6 +67,6 @@ public class EnemyBomber : MonoBehaviour
                 body.AddExplosionForce(explodeStrength, transform.position, explodeRadius, 3,ForceMode.Impulse);
             }
         }
-        Destroy(transform.parent.gameObject, 0.1f);
+        Destroy(transform.gameObject, 0.2f);
     }
 }

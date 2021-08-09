@@ -12,6 +12,9 @@ public class GrapplingGun : MonoBehaviour
     private float maxDistance = 100f;
     private SpringJoint joint;
 
+    [SerializeField] float spring;
+    [SerializeField] float damper;
+    [SerializeField] float massScale;
 
     Item grapplingHook;
 
@@ -62,15 +65,22 @@ public class GrapplingGun : MonoBehaviour
             joint.minDistance = distanceFromPoint * 0.25f;
 
             //Adjust these values to fit gameplay style.
-            joint.spring = 4.5f;
-            joint.damper = 7f;
-            joint.massScale = 4.5f;
+
+            // How fast grappling hook will pull player
+            joint.spring = spring;
+
+            //How long it will stretch
+            joint.damper = damper;
+
+            // How fast player can move with grappling hook. 
+            joint.massScale = massScale;
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
         }
     }
 
+    //[SerializedField]
 
     /// <summary>
     /// Call whenever we want to stop a grapple
