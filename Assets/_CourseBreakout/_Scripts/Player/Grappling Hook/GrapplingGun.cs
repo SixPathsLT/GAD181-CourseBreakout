@@ -6,7 +6,7 @@ public class GrapplingGun : MonoBehaviour
 {
 
     private LineRenderer lr;
-    private Vector3 grapplePoint;
+
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
     private float maxDistance = 100f;
@@ -15,10 +15,13 @@ public class GrapplingGun : MonoBehaviour
 
     Item grapplingHook;
 
+    GameObject hitPointObject;
+
     void Awake()
     {
         grapplingHook = GetComponentInParent<Item>();
         lr = GetComponent<LineRenderer>();
+        hitPointObject = new GameObject();
     }
 
     //Called after Update
@@ -27,10 +30,11 @@ public class GrapplingGun : MonoBehaviour
         DrawRope();
     }
 
+
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
-   public void StartGrapple()
+    public void StartGrapple()
     {
        
         if (grapplingHook.charges < 1)
@@ -44,12 +48,14 @@ public class GrapplingGun : MonoBehaviour
         {
             grapplingHook.SetUsingAbility(true);
 
-            grapplePoint = hit.point;
+            hitPointObject.transform.position = hit.point;
+            hitPointObject.transform.SetParent(hit.transform);
+            
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = grapplePoint;
+            joint.connectedAnchor = hitPointObject.transform.position;
 
-            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+            float distanceFromPoint = Vector3.Distance(player.position, hitPointObject.transform.position);
 
             //The distance grapple will try to keep from grapple point. 
             joint.maxDistance = distanceFromPoint * 0.8f;
@@ -89,8 +95,8 @@ public class GrapplingGun : MonoBehaviour
         }
        
         grapplingHook.ReduceCharges();
-
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
+        
+        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, hitPointObject.transform.position, Time.deltaTime * 8f);
 
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);
@@ -103,6 +109,6 @@ public class GrapplingGun : MonoBehaviour
 
     public Vector3 GetGrapplePoint()
     {
-        return grapplePoint;
+        return hitPointObject.transform.position;
     }
 }

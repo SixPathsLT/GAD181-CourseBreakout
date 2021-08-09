@@ -19,7 +19,7 @@ public class SoundEffect : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
             shoot.Play();
-        if (Input.GetKeyDown(KeyCode.Space))
-            jump.Play();
+       // if (Input.GetKeyDown(KeyCode.Space))
+       //    jump.Play();
     }
 }

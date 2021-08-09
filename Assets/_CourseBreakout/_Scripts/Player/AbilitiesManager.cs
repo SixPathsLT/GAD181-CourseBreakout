@@ -35,8 +35,7 @@ public class AbilitiesManager : MonoBehaviour
 
         if (slot == null)
             return;
-
-      
+        
         switch (slot.itemName.text) {
             case "Grappling Hook":
                 currentAbility = Ability.GRAPPLING_HOOK;

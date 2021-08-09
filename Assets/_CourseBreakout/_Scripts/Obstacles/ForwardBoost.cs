@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ForwardBoost : MonoBehaviour
 {
-    [Range(100, 10000)]
+    [Range(1, 10000)]
     public float forwardboostspeed;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         GameObject forwardboostplatform = collision.gameObject;
         Rigidbody rb = forwardboostplatform.GetComponent<Rigidbody>();
-        rb.AddForce(Vector3.forward * forwardboostspeed);
+
+        
+       rb.velocity += new Vector3(0, 0, forwardboostspeed);
+        //rb.AddForce(Vector3.forward * forwardboostspeed);
+
     }
 }

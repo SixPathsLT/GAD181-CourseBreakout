@@ -14,8 +14,6 @@ public class InventoryManager : MonoBehaviour
     
     int selectedSlotIndex = -1;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         foreach (InventorySlot slot in inventoryUI.GetComponentsInChildren<InventorySlot>())
@@ -33,7 +31,10 @@ public class InventoryManager : MonoBehaviour
 
         if (slot.GetItem() == null)
             return;
-        
+
+
+        FindObjectOfType<AbilitiesManager>().grapplingHook.GetComponent<GrapplingGun>().StopGrapple();
+
         foreach (InventorySlot s in inventoryUI.GetComponentsInChildren<InventorySlot>()) {
             s.GetComponent<Image>().CrossFadeColor(new Color(255, 255, 255, 1), 0.3f, true, true);
         }

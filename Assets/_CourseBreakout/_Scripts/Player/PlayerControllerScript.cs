@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class PlayerControllerScript : MonoBehaviour
 {
 
-    bool inTutorial = true;
+    bool inTutorial = false;
 
     public Camera fps;
     public int range;
 
+    public float gravity = 8f;
     public float playerHealth = 300;
     PlayerCheckpoint relive;
 
@@ -44,6 +45,7 @@ public class PlayerControllerScript : MonoBehaviour
     public ParticleSystem HealthVFX2;
     public ParticleSystem HealthVFX3;
 
+    float distanceToGround;
 
 
 
@@ -71,6 +73,9 @@ public class PlayerControllerScript : MonoBehaviour
 
         relive = GetComponent<PlayerCheckpoint>();
         //boom = GetComponent<EnemyBomber>();
+
+
+        distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
     }
 
     void EndTutorial() {
@@ -102,24 +107,19 @@ public class PlayerControllerScript : MonoBehaviour
             return;
 
             //player movement
-        float x = Input.GetAxis("Horizontal");
+       /* float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 moveDirection = ((transform.right * x) + (transform.forward * z)).normalized * speed * Time.deltaTime;
         
-        transform.position += moveDirection;
+      //  transform.position += moveDirection;
 
-        // camera movement
-        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity * Time.deltaTime;
+        Rigidbody rigidBody = GetComponent<Rigidbody>();
+        rigidBody.MovePosition(transform.position + moveDirection);
+    */
 
-        xRotation -= mouseY;
-        yRotation += mouseX;
 
-        xRotation = Mathf.Clamp(xRotation, -60, 60);
 
-        transform.Find("Top").gameObject.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -145,22 +145,102 @@ public class PlayerControllerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        //player movement
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        
+
+
         bool jump = Input.GetKey("space");
 
-        Rigidbody playerBody = GetComponent<Rigidbody>();
-        if (jump && playerBody != null && isGrounded)
+
+         Vector3 moveDirection = ((transform.right * x) + (transform.forward * z)).normalized * speed;
+
+         Rigidbody playerBody = GetComponent<Rigidbody>();
+        // playerBody.MovePosition(transform.position + moveDirection);
+
+
+
+        if (!isGrounded)
         {
-            isGrounded = false;
-            playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (moveDirection.x == 0)
+                moveDirection.x = playerBody.velocity.x / 1.005f;
+            if (moveDirection.z == 0)
+                moveDirection.z = playerBody.velocity.z / 1.005f;
+        }
+
+        var controlledVelocity = playerBody.velocity;
+        controlledVelocity.x = Mathf.Clamp(controlledVelocity.x, -speed, speed);
+        controlledVelocity.z = Mathf.Clamp(controlledVelocity.z, -speed, speed);
+
+
+        var requiredVelocity = moveDirection - controlledVelocity;
+
+
+       // if ((x != 0 || isGrounded) && (playerBody.velocity.x < speed && playerBody.velocity.x > -speed))
+            requiredVelocity.x = Mathf.Clamp(requiredVelocity.x, -speed, speed);
+       // if ((z != 0 || isGrounded) && (playerBody.velocity.z < speed && playerBody.velocity.z > -speed))
+            requiredVelocity.z = Mathf.Clamp(requiredVelocity.z, -speed, speed);
+            
+         requiredVelocity.y = 0;
+
+         playerBody.AddForce(requiredVelocity, ForceMode.VelocityChange);
+
+
+
+        if (!isGrounded)
+         {
+            playerBody.AddForce(new Vector3(0, -gravity, 0));
+            //playerBody.velocity += new Vector3(0, -gravity * Time.fixedDeltaTime, 0);
+         }
+
+
+        // camera movement
+        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+        yRotation += mouseX;
+
+        xRotation = Mathf.Clamp(xRotation, -60, 60);
+
+        transform.Find("Top").gameObject.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+
+
+      if (jump && playerBody != null && isGrounded)
+        {
+            Jump(jumpForce, ForceMode.VelocityChange);
+           // playerBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
 
             if (playerBody.velocity.magnitude > maxHeight) {
-                playerBody.velocity = new Vector3(0, maxHeight, playerBody.velocity.y);
+                playerBody.velocity = new Vector3(playerBody.velocity.x, maxHeight, playerBody.velocity.z);
             }
         }
+
     }
+
+    public void Jump(float jumpForce, ForceMode forceMode)
+    {
+        if (!isGrounded)
+            return;
+
+        isGrounded = false;
+
+        Rigidbody playerBody = GetComponent<Rigidbody>();
+
+        playerBody.AddForce(Vector3.up * jumpForce, forceMode);
+        FindObjectOfType<SoundEffect>().jump.Play();
+    }
+ 
     private void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+
+
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.5f);
+
+
         if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets") && companion.shieldPlayer == false)
         {
             EnemyDamage(20);
