@@ -26,5 +26,5 @@ public class PickKey : MonoBehaviour
         {
             keygone.SetActive(false);
         }
-    }
+    } 
 }

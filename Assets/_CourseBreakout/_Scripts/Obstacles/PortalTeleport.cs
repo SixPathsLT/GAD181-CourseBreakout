@@ -5,11 +5,18 @@ using UnityEngine;
 public class PortalTeleport : MonoBehaviour
 {
 
+   /* GameObject[] enemies;
+    Rigidbody rb;
+    int timer;
+    
     // Start is called before the first frame update
     void Start()
     {
-
-    }
+        if (timer == 10)
+        {
+            rb = Instantiate(enemies[Random.Range(0, enemies.Length)], transform.forward, Quaternion.identity).GetComponent<Rigidbody>();
+        }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -21,7 +28,7 @@ public class PortalTeleport : MonoBehaviour
     {
         if (Player.tag == "Player")
         {
-            Player.transform.position = new Vector3(84.1f, 121.7248f, -8243f);
+            Player.transform.position = new Vector3(24.44f, 695.9f, -7113.86f);
         }
     }
 

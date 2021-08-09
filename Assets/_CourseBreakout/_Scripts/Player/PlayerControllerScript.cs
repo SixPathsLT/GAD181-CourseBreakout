@@ -44,7 +44,10 @@ public class PlayerControllerScript : MonoBehaviour
     public ParticleSystem HealthVFX2;
     public ParticleSystem HealthVFX3;
 
+    public RawImage PoisonWarning;
 
+
+    public int score;
 
 
     KeyCode[] inventoryKeys = {
@@ -67,9 +70,10 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
 
-        Invoke("EndTutorial", 15f);
+        Invoke("EndTutorial", 1f);
 
         relive = GetComponent<PlayerCheckpoint>();
+        //scores = GetComponent<BossRadios>();
         //boom = GetComponent<EnemyBomber>();
     }
 
@@ -141,6 +145,11 @@ public class PlayerControllerScript : MonoBehaviour
            playerHealth = 300;
         }
         PoisonPlayer();
+       
+        if(score >= 4)
+        {
+            transform.position = new Vector3(-0.9397129f, 520.2917f, -8678.727f);
+        }
     }
 
     void FixedUpdate()
@@ -186,11 +195,13 @@ public class PlayerControllerScript : MonoBehaviour
         if (isPoisoned)
         {
             playerHealth -= 0.2f;
+            PoisonWarning.gameObject.SetActive(true);
         }
     }
     void PoisonEnd()
     {
         isPoisoned = false;
+        PoisonWarning.gameObject.SetActive(false);
     }
     // Until here
     private void OnTriggerEnter(Collider other)
