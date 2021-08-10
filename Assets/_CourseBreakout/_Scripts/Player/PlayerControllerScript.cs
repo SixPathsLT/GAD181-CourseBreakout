@@ -72,7 +72,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
-        Invoke("EndTutorial", 1f);
+        Invoke("EndTutorial", 14f);
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
@@ -92,7 +92,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         inTutorial = false;
         
-        notifications.SendNotification("Grab the key to open the door.", 4);
+        notifications.SendNotification("Go to the vents and grab the green key.", 4);
         notifications.SendNotification("Press E to interact with objects.", 4, 4);
     }
 
