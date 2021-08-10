@@ -327,7 +327,7 @@ MonoBehaviour:
   distance: 0
   explodeRadius: 10
   explodeStrength: 10
-  range: 6
+  range: 15
   speed: 2
   boomer: {fileID: 9087834241221116857}
 --- !u!65 &3815321349654377812

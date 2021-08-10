@@ -16,6 +16,7 @@ TagManager:
   - Checkpoint
   - BombBody
   - Poison
+  - Sloth
   layers:
   - Default
   - TransparentFX

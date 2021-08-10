@@ -36,7 +36,7 @@ public class EnemySloth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            player.GetComponent<PlayerControllerScript>().playerHealth -= 10f;
+            player.GetComponent<PlayerControllerScript>().playerHealth -= 5f;
         }
     }
 }
