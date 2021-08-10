@@ -5,7 +5,7 @@ using UnityEngine;
 public class Swing : MonoBehaviour
 {
     Rigidbody rb;
-
+    public float force;
     float timer;
 
     void Start()
@@ -19,7 +19,7 @@ public class Swing : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= 5) 
         {
-            rb.AddForce(transform.forward * 1500);
+            rb.AddForce(transform.forward * force);
            // Debug.Log("EEEEE");
             timer = 0;
         }
