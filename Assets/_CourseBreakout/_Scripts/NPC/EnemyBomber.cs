@@ -16,6 +16,12 @@ public class EnemyBomber : MonoBehaviour
 
     public GameObject boomer;
 
+    PlayerControllerScript health;
+
+    private void Start()
+    {;
+
+    }
     void Update()
     {
         distance = Vector3.Distance(transform.position, player.position);
@@ -65,6 +71,10 @@ public class EnemyBomber : MonoBehaviour
             if (body != null)
             {
                 body.AddExplosionForce(explodeStrength, transform.position, explodeRadius, 3,ForceMode.Impulse);
+                if (distance <= explodeRadius) 
+                {
+                    GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerScript>().playerHealth -= 10;
+                }
             }
         }
         Destroy(transform.gameObject, 0.2f);

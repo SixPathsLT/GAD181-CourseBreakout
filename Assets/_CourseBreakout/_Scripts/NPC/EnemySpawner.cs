@@ -19,10 +19,12 @@ public class EnemySpawner : MonoBehaviour
     {
         if (dist <= range)
         {
+            transform.LookAt(player);
             timer += Time.deltaTime;
             if(timer >= 5)
             {
                 Rigidbody rb = Instantiate(Enemies[Random.Range(0, Enemies.Length)], transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 42f, ForceMode.Impulse);
                 timer = 0;
             }
            /* else
