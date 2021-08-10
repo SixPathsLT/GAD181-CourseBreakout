@@ -70,7 +70,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         
         notifications.SendNotification("Welcome to Course Breakout!", 3);
-        notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
+        notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
         Invoke("EndTutorial", 14f);
 
@@ -93,7 +93,7 @@ public class PlayerControllerScript : MonoBehaviour
         inTutorial = false;
         
         notifications.SendNotification("Grab the key to open the door.", 4);
-        notifications.SendNotification("Press E to Interact with objects.", 4, 4);
+        notifications.SendNotification("Press E to interact with objects.", 4, 4);
     }
 
     void Update()
