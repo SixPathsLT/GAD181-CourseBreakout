@@ -4,97 +4,58 @@ public class FloatingPlatformScript : MonoBehaviour
 {
 
     public enum MovementType {
-        Vertical, Horizontal, Hybrid, 
+        Y_AXIS, X_AXIS, Z_AXIS, 
     }
 
     public MovementType movementType;
-
-    [Header("Vertical Settings")]
+    
     [Range(1, 50)]
-    public float verticalSpeed = 10;
-    public float minVerticalOffset = 10;
-    public float maxVerticalOffset = 25;
+    public float speed = 10;
+    public float minOffset = 10;
+    public float maxOffset = 25;
 
-    [Space(10)]
-
-    [Header("Horizontal Settings")]
-    [Range(1, 50)]
-    public float horizontalSpeed = 10;
-    public float minHorizontalOffset = 10;
-    public float maxHorizontalOffset = 25;
-
-    [Space(10)]
-
-    [Header("Hybrid Settings")]
-    [Range(1, 50)]
-    public float hybridSpeed = 20;
-    public float levitationMaxSpeed = 3;
-    public float levitationMaxOffset = 30;
-    public GameObject centerObject;
 
     float dir = -1;
     Vector3 originalPosition;
 
     float offset;
+
+    Rigidbody rigidBody;
     
-    // Start is called before the first frame update
     void Start() {
-       
-        switch (movementType)
-        {
-            case MovementType.Vertical:
-                offset = Random.Range(minVerticalOffset, maxVerticalOffset);
-                break;
-            case MovementType.Horizontal:
-                offset = Random.Range(minHorizontalOffset, maxHorizontalOffset);
-                break;
-            case MovementType.Hybrid:
-                offset = Random.Range(1, levitationMaxOffset);
-                break;
-        }
-
-         originalPosition = transform.position;
+       originalPosition = transform.position;
+       rigidBody = GetComponent<Rigidbody>();
+       offset = Random.Range(minOffset, maxOffset);
     }
-
-    // Update is called once per frame
-    void Update() {
-
+    
+    void FixedUpdate() {
         switch(movementType)
         {
-            case MovementType.Vertical:
+            case MovementType.Y_AXIS:
                 if (transform.position.y >= originalPosition.y + offset)
                     dir = -1;
                 else if (transform.position.y <= originalPosition.y - offset)
                     dir = 1;
 
-                transform.position = new Vector3(originalPosition.x, transform.position.y + dir * verticalSpeed * Time.deltaTime, originalPosition.z);
+                rigidBody.MovePosition(new Vector3(originalPosition.x, transform.position.y + dir * speed * Time.deltaTime, originalPosition.z));
 
                 break;
-            case MovementType.Horizontal:
+            case MovementType.X_AXIS:
                 if (transform.position.x >= originalPosition.x + offset)
                     dir = -1;
                 else if (transform.position.x <= originalPosition.x - offset)
                     dir = 1;
-
-                transform.position = new Vector3(transform.position.x + dir * horizontalSpeed * Time.deltaTime, originalPosition.y, originalPosition.z);
+                                
+               rigidBody.MovePosition(new Vector3(transform.position.x + dir * speed * Time.deltaTime, originalPosition.y, originalPosition.z));
                 break;
-            case MovementType.Hybrid:
-               if (centerObject == null)
-                   return;
+            case MovementType.Z_AXIS:
+                if (transform.position.z >= originalPosition.z + offset)
+                    dir = -1;
+                else if (transform.position.z <= originalPosition.z - offset)
+                    dir = 1;
 
-               Vector3 newPosition = new Vector3(centerObject.transform.position.x, dir, centerObject.transform.position.z);
-
-               float levitationSpeed = Random.Range(1, levitationMaxSpeed);
-
-               if (transform.position.y > originalPosition.y + offset)
-                   dir = -1;
-               else if (transform.position.y < originalPosition.y - offset)
-                   dir = 1;
-               
-               transform.position = new Vector3(transform.position.x, transform.position.y + dir * levitationSpeed * Time.deltaTime, transform.position.z);
-               transform.RotateAround(newPosition, Vector3.down, hybridSpeed * Time.deltaTime);
-   
-               break;
+               rigidBody.MovePosition(new Vector3(originalPosition.x, originalPosition.y, transform.position.z + dir * speed * Time.deltaTime));
+                break;
         }
     }
 

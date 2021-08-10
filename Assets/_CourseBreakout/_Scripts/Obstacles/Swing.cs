@@ -20,7 +20,7 @@ public class Swing : MonoBehaviour
         if (timer >= 5) 
         {
             rb.AddForce(transform.forward * 1500);
-            Debug.Log("EEEEE");
+           // Debug.Log("EEEEE");
             timer = 0;
         }
     }

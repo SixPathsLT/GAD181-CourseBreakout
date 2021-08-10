@@ -9,7 +9,7 @@ public class GrapplingGun : MonoBehaviour
 
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
-    private float maxDistance = 100f;
+    private float maxDistance = 200f;
     private SpringJoint joint;
 
     [SerializeField] float spring;
@@ -42,8 +42,7 @@ public class GrapplingGun : MonoBehaviour
        
         if (grapplingHook.charges < 1)
             return;
-
-     
+        
         //  grapplingHook.charges--;
 
         RaycastHit hit;
@@ -56,13 +55,13 @@ public class GrapplingGun : MonoBehaviour
             
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = hitPointObject.transform.position;
+            joint.connectedAnchor = hitPointObject.transform.position + (Vector3.up * 5);
 
             float distanceFromPoint = Vector3.Distance(player.position, hitPointObject.transform.position);
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint * 0.8f;
-            joint.minDistance = distanceFromPoint * 0.25f;
+           //joint.maxDistance = distanceFromPoint * 0.8f;
+            //joint.minDistance = distanceFromPoint * 0.25f;
 
             //Adjust these values to fit gameplay style.
 
@@ -74,6 +73,7 @@ public class GrapplingGun : MonoBehaviour
 
             // How fast player can move with grappling hook. 
             joint.massScale = massScale;
+
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerControllerScript : MonoBehaviour
 {
 
-    bool inTutorial = false;
+    bool inTutorial = true;
 
     public Camera fps;
     public int range;
@@ -72,7 +72,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow the Companions Instructions.", 3, 4);
 
-        Invoke("EndTutorial", 1f);
+        Invoke("EndTutorial", 14f);
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
@@ -98,6 +98,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Update()
     {
+        if (inTutorial)
+            return;
 
         //inventory keys
         for (int i =0; i < inventoryKeys.Length; i++) {
@@ -106,22 +108,6 @@ public class PlayerControllerScript : MonoBehaviour
             if (Input.GetKeyDown(keyCode))
                 inventoryManager.SelectItem(i);
         }
-
-        if (inTutorial)
-            return;
-
-            //player movement
-       /* float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 moveDirection = ((transform.right * x) + (transform.forward * z)).normalized * speed * Time.deltaTime;
-        
-      //  transform.position += moveDirection;
-
-        Rigidbody rigidBody = GetComponent<Rigidbody>();
-        rigidBody.MovePosition(transform.position + moveDirection);
-    */
-
 
 
 
@@ -154,6 +140,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (inTutorial)
+            return;
 
         //player movement
         float x = Input.GetAxis("Horizontal");

@@ -36,7 +36,7 @@ public class Companion : MonoBehaviour
         {
             shieldPlayer = true;
             shieldObject.SetActive(true);
-            Invoke(nameof(ShieldEnd), 5);
+            Invoke(nameof(ShieldEnd), 10);
             shieldScreen.SetActive(true);
        //     player.GetComponent<Collider>().isTrigger = true;
         }

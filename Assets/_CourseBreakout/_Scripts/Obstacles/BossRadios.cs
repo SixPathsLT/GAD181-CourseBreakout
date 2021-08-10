@@ -9,7 +9,7 @@ public class BossRadios : MonoBehaviour
     float time;
     public TextMeshProUGUI count;
     public int score;
-    public PlayerControllerScript playercontroller;
+    public GameObject player;
 
     private void Start()
     {
@@ -21,17 +21,17 @@ public class BossRadios : MonoBehaviour
     }
     private void OnTriggerStay()
     {
-        count.text = "Deactivating " + time.ToString();
+        count.text = "Deactivating.... (" + (int)time + "%)";
         if (Input.GetKey(KeyCode.E))
         {
             time += Time.deltaTime;
             count.gameObject.SetActive(true);
-            if (time >= 10)
+            if (time >= 100)
             {
                 Radio.SetActive(false);
                 time = 0;
                 count.gameObject.SetActive(false);
-                playercontroller.score++;
+                player.GetComponent<PlayerControllerScript>().score++;
             }
         }
     }

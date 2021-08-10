@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = Random.Range(1, 6);
+        speed = Random.Range(3, 15);
        
         if ((transform.position.x + 0.8) > platform.GetComponent<Renderer>().bounds.max.x)
             dirX = -1;

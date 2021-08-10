@@ -24,11 +24,13 @@ public class PortalTeleport : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider Player)
+    void OnTriggerEnter(Collider collider)
     {
-        if (Player.tag == "Player")
+        if (collider.tag == "Player")
         {
-            Player.transform.position = new Vector3(24.44f, 695.9f, -7113.86f);
+            collider.gameObject.GetComponent<PlayerControllerScript>().GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            collider.transform.position = GameObject.Find("SpawnAtBoss").transform.position;
+          //  collider.transform.position = new Vector3(22.7f, 661.8f, -7138.8f);
         }
     }
 
