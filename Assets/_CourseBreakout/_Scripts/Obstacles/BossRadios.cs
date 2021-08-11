@@ -19,24 +19,26 @@ public class BossRadios : MonoBehaviour
     {
 
     }
-    private void OnTriggerStay()
+    private void OnTriggerStay(Collider other)
     {
-        count.text = "Deactivating.... (" + (int)time + "%)";
-        if (Input.GetKey(KeyCode.E))
+        if (other.gameObject.CompareTag("Player"))
         {
-            time += Time.deltaTime;
-            count.gameObject.SetActive(true);
-            if (time >= 100)
+            //count.text = "Deactivating.... (" + (int)time + "%)";
+
+            if (Input.GetKey(KeyCode.E))
             {
-                Radio.SetActive(false);
-                time = 0;
-                count.gameObject.SetActive(false);
-                player.GetComponent<PlayerControllerScript>().score++;
+                time += Time.deltaTime;
+                count.text = "Deactivating.... (" + (int)time + "%)";
+                count.gameObject.SetActive(true);
+                if (time >= 100)
+                {
+                    Radio.SetActive(false);
+                    time = 0;
+                    count.gameObject.SetActive(false);
+                    player.GetComponent<PlayerControllerScript>().score++;
+                }
             }
         }
     }
-    private void OnTriggerExit()
-    {
-        
-    }
 }
+
