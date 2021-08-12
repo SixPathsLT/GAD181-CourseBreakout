@@ -37,9 +37,10 @@ public class PlayerCheckpoint : MonoBehaviour
 
     public void Respawn() 
     {
-        gameObject.transform.eulerAngles = new Vector3 (0, 0, 0);
-        GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
+        GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
         gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
+        player.GetComponent<PlayerControllerScript>().yRotation = 0;
         Debug.Log("Checkpoint Active");
     }
 } 

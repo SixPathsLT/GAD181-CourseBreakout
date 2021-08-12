@@ -11,7 +11,7 @@ public class Swing : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 1800);
+        rb.AddForce(transform.forward * 32800);
     }
 
     void Update()

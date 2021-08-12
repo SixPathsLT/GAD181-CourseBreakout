@@ -27,7 +27,8 @@ public class PlayerControllerScript : MonoBehaviour
     bool isPoisoned;
 
     public bool isGrounded = false;
-    float xRotation, yRotation = 0f;
+    [HideInInspector]
+   public float xRotation, yRotation = 0f;
 
     public Text notificationText;
     public GameObject grappleHook;
