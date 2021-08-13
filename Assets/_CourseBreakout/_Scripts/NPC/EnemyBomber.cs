@@ -18,12 +18,15 @@ public class EnemyBomber : MonoBehaviour
 
     PlayerControllerScript health;
 
+    public ParticleSystem explosionVFX;
+
     private void Start()
-    {;
+    {
 
     }
     void Update()
     {
+        explosionVFX.transform.position = transform.position;
         distance = Vector3.Distance(transform.position, player.position);
         if (distance <= range)
         {
@@ -70,13 +73,14 @@ public class EnemyBomber : MonoBehaviour
             Rigidbody body = near.GetComponent<Rigidbody>();
             if (body != null)
             {
-                body.AddExplosionForce(explodeStrength, transform.position, explodeRadius, 3,ForceMode.Impulse);
-                if (distance <= explodeRadius) 
-                {
-                    GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerScript>().playerHealth -= 10;
+                body.AddExplosionForce(explodeStrength, transform.position, explodeRadius, 10,ForceMode.Impulse);
+                explosionVFX.Play();
+                if (distance <= explodeRadius && GameObject.Find("Companion").GetComponent<Companion>().shieldPlayer == false)
+                {               
+                     GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerScript>().playerHealth -= 10;
                 }
+                Destroy(transform.gameObject);
             }
         }
-        Destroy(transform.gameObject, 0.2f);
     }
 }

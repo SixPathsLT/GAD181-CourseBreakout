@@ -11,35 +11,19 @@ public class PlayerCheckpoint : MonoBehaviour
     public ParticleSystem HealthVFX;
     public ParticleSystem HealthVFX2;
     public ParticleSystem HealthVFX3;
+    
 
- //   public float playerHealth = 200;
-
- //   public Companion companion;
-
-    // Start is called before the first frame update
     void Start()
     { 
         spawnPoint = gameObject.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.y < -20f)
+        if (gameObject.transform.position.y < -25f)
         {
              Respawn();
-          /*  GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
-            gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
-            Debug.Log("Checkpoint Active");*/
         }
-       /* else if (playerHealth <= 0) 
-        {
-            // Respawn();
-            GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
-            gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
-            Debug.Log("Checkpoint Active");
-        }*/
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,39 +33,11 @@ public class PlayerCheckpoint : MonoBehaviour
             spawnPoint = other.gameObject.transform.position;
             Destroy(other.gameObject);
         }
-   /*     if (other.gameObject.CompareTag("HealthKit"))
-        {
-            playerHealth += 50f;
-            Destroy(other.gameObject);
-            HealthVFX.Play();
-        }
-        if (other.gameObject.CompareTag("HealthKit2"))
-        {
-            playerHealth += 50f;
-            Destroy(other.gameObject);
-            HealthVFX2.Play();
-        }
-        if (other.gameObject.CompareTag("HealthKit3"))
-        {
-            playerHealth += 50f;
-            Destroy(other.gameObject);
-            HealthVFX3.Play();
-        }*/
     }
 
-   /* public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets") && companion.shieldPlayer == false) 
-        {
-            EnemyDamage(20);
-        }
-    }
-    public void EnemyDamage(float amount)
-    { 
-          playerHealth -= amount;        
-    }*/
     public void Respawn() 
     {
+        gameObject.transform.eulerAngles = new Vector3 (0, 0, 0);
         GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
         gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
         Debug.Log("Checkpoint Active");

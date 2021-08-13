@@ -20,6 +20,7 @@ public class Companion : MonoBehaviour
     public bool shieldPlayer;
 
     public ParticleSystem healthVFX;
+    public ParticleSystem shieldVFX;
 
     bool isHealing = false;
 
@@ -38,6 +39,7 @@ public class Companion : MonoBehaviour
             shieldObject.SetActive(true);
             Invoke(nameof(ShieldEnd), 10);
             shieldScreen.SetActive(true);
+            shieldVFX.Play();
        //     player.GetComponent<Collider>().isTrigger = true;
         }
     }
@@ -106,7 +108,7 @@ public class Companion : MonoBehaviour
         shieldObject.SetActive(false);
         shieldScreen.SetActive(false);
         transform.position = player.transform.position;
-        transform.position += player.transform.forward * 1.3f + player.transform.right * 0.7f + transform.up * 0.5f;
+        transform.position += player.transform.forward * 0.59f + player.transform.right * 0.4f + transform.up * 0.5f;
         transform.rotation = player.transform.rotation;
         player.GetComponent<Collider>().isTrigger = false;
     }
