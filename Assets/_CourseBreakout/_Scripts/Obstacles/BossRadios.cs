@@ -23,12 +23,12 @@ public class BossRadios : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //count.text = "Deactivating.... (" + (int)time + "%)";
+            //count.text = "Deactivating... (" + (int)time + "%)";
 
             if (Input.GetKey(KeyCode.E))
             {
                 time += Time.deltaTime;
-                count.text = "Deactivating.... (" + (int)time + "%)";
+                count.text = "Deactivating... (" + (int)time + "%)";
                 count.gameObject.SetActive(true);
                 if (time >= 100)
                 {
