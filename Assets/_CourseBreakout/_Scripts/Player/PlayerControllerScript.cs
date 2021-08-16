@@ -137,7 +137,7 @@ public class PlayerControllerScript : MonoBehaviour
        
         if(score >= 4)
         {
-            transform.position = new Vector3(-0.9397129f, 520.2917f, -8678.727f);
+            transform.position = new Vector3(27.5f, 72.1f, -11535f);
         }
     }
 
