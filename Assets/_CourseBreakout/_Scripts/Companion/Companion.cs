@@ -84,7 +84,7 @@ public class Companion : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= maxtime && !spinYN)
         { 
-            transform.Rotate(new Vector3(0, 120, 0) * speed * Time.deltaTime);
+            transform.Rotate(new Vector3(0, -120, 0) * speed * Time.deltaTime);
             Invoke(nameof(StopSpin), 2);
         }
 

@@ -22,7 +22,9 @@ public class PlayerControllerScript : MonoBehaviour
     public float maxtime = 0.4f;
     public float maxHeight = 3f;
 
-    public float sensitivity, speed, jumpForce;
+    public float speed, jumpForce;
+
+    public Settings setting;
 
     bool isPoisoned;
 
@@ -195,8 +197,8 @@ public class PlayerControllerScript : MonoBehaviour
 
 
         // camera movement
-        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * setting.sensetivity * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * setting.sensetivity * Time.deltaTime;
 
         xRotation -= mouseY;
         yRotation += mouseX;
