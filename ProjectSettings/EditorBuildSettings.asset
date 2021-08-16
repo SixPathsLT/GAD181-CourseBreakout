@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/_CourseBreakout/_Scenes/Saif Scene.unity
     guid: f7284309299c20e4e9597ff2a0e1fe22
   - enabled: 1
+    path: Assets/_CourseBreakout/_Scenes/MainMenu Scene.unity
+    guid: 65d69144dc26da54f846a103b50f5aab
+  - enabled: 1
     path: Assets/_CourseBreakout/_Scenes/Main Scene.unity
     guid: 26a9ee17263482e47befce0e876e35a3
   m_configObjects: {}

@@ -75,7 +75,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
-        Invoke("EndTutorial", 14f);
+        Invoke("EndTutorial", 1f);
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
