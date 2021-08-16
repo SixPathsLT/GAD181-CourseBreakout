@@ -241,7 +241,7 @@ public class PlayerControllerScript : MonoBehaviour
         isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.5f);
 
 
-        if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets") && companion.shieldPlayer == false)
+        if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets"))
         {
             EnemyDamage(20);
         }
