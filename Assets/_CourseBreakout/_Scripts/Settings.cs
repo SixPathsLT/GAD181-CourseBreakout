@@ -4,6 +4,6 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class Settings : ScriptableObject
 {
-    public float sensetivity;
+    public float sensetivity = 350;
 }
 // linking two scripts together no matter what scene in they are
