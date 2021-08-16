@@ -211,9 +211,11 @@ MonoBehaviour:
   range: 50
   timeBetweenAttacks: 5
   upForce: 0
+  forwardForce: 32
   projectile: {fileID: 0}
   isAttacking: 0
   player: {fileID: 0}
+  shootingVFX: {fileID: 0}
 --- !u!1 &3576181535673388303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,9 +1385,11 @@ MonoBehaviour:
   range: 50
   timeBetweenAttacks: 5
   upForce: 0
+  forwardForce: 32
   projectile: {fileID: 0}
   isAttacking: 0
   player: {fileID: 0}
+  shootingVFX: {fileID: 0}
 --- !u!1 &9085550529162544001
 GameObject:
   m_ObjectHideFlags: 0
