@@ -30,6 +30,7 @@ public class PortalTeleport : MonoBehaviour
         {
             collider.gameObject.GetComponent<PlayerControllerScript>().GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             collider.transform.position = GameObject.Find("SpawnAtBoss").transform.position;
+            FindObjectOfType<AudioManager>().PlayClip("BossBg");
           //  collider.transform.position = new Vector3(22.7f, 661.8f, -7138.8f);
         }
     }

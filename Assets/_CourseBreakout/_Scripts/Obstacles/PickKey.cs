@@ -17,14 +17,14 @@ public class PickKey : MonoBehaviour
     // Update is called once per frame
     public void OnTriggerStay()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
+       // if (Input.GetKey(KeyCode.E))
+       // {
             doorcolliderhere.GetComponent<BoxCollider>().enabled = true;
-        }
+      //  }
 
-        if (Input.GetKey(KeyCode.E))
-        {
+       // if (Input.GetKey(KeyCode.E))
+       // {
             keygone.SetActive(false);
-        }
+       // }
     } 
 }

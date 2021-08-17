@@ -42,8 +42,10 @@ public class GrapplingGun : MonoBehaviour
        
         if (grapplingHook.charges < 1)
             return;
-        
+
         //  grapplingHook.charges--;
+
+     
 
         RaycastHit hit;
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable) && hit.collider.isTrigger == false)
@@ -60,8 +62,8 @@ public class GrapplingGun : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(player.position, hitPointObject.transform.position);
 
             //The distance grapple will try to keep from grapple point. 
-           //joint.maxDistance = distanceFromPoint * 0.8f;
-            //joint.minDistance = distanceFromPoint * 0.25f;
+          // joint.maxDistance = distanceFromPoint * 0.8f;
+           // joint.minDistance = distanceFromPoint * 0.25f;
 
             //Adjust these values to fit gameplay style.
 
@@ -94,8 +96,9 @@ public class GrapplingGun : MonoBehaviour
 
     private Vector3 currentGrapplePosition;
 
-    void DrawRope()
-    {
+    void DrawRope() { 
+    
+
         //If not grappling, don't draw rope
         if (!joint) return;
 
@@ -105,8 +108,11 @@ public class GrapplingGun : MonoBehaviour
         }
        
         grapplingHook.ReduceCharges();
-        
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, hitPointObject.transform.position, Time.deltaTime * 8f);
+
+
+       currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, hitPointObject.transform.position, Time.deltaTime * 8f);
+
+      
 
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);

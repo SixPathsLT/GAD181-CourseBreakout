@@ -14,20 +14,22 @@ public class BossRadios : MonoBehaviour
     private void Start()
     {
         count.gameObject.SetActive(false);
+        
     }
     void Update()
     {
-
+        
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log(time);
             //count.text = "Deactivating... (" + (int)time + "%)";
 
             if (Input.GetKey(KeyCode.E))
             {
-                time += Time.deltaTime;
+                time += Time.deltaTime * 20;
                 count.text = "Deactivating... (" + (int)time + "%)";
                 count.gameObject.SetActive(true);
                 if (time >= 100)

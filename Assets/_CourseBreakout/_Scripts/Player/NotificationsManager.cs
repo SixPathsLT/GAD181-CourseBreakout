@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NotificationsManager : MonoBehaviour
 {
 
-    public Text notificationText;
+   // public Text notificationText;
+    public TextMeshProUGUI meshPro;
 
     public void SendNotification(string message, float time = 3, float delay = 0)
     {
@@ -17,9 +19,9 @@ public class NotificationsManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        notificationText.text = message;
+        meshPro.text = message;
         yield return new WaitForSeconds(time);
-        notificationText.text = "";
+        meshPro.text = "";
     }
 
 }

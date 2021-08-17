@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerControllerScript : MonoBehaviour
@@ -75,7 +76,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
-        Invoke("EndTutorial", 1f);
+        Invoke("EndTutorial", 13f);
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
@@ -83,6 +84,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 
         distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
+
     }
 
     void EndTutorial() {
@@ -96,7 +98,11 @@ public class PlayerControllerScript : MonoBehaviour
         inTutorial = false;
         
         notifications.SendNotification("Go to the vents and grab the green key.", 4);
-        notifications.SendNotification("Press E to interact with objects.", 4, 4);
+        notifications.SendNotification("Hold Right Click to use your ability.", 4, 6);
+        notifications.SendNotification("Use 1-4 keys to switch abilities.", 4, 10);
+        notifications.SendNotification("Press E to open the door.", 4, 25);
+
+        FindObjectOfType<AudioManager>().PlayClip("GameBg");
     }
 
     void Update()
@@ -135,11 +141,25 @@ public class PlayerControllerScript : MonoBehaviour
         }
         PoisonPlayer();
        
-        if(score >= 4)
-        {
+        if(score >= 4)  {
+            score = 0;
             transform.position = new Vector3(27.5f, 72.1f, -11535f);
+
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            FindObjectOfType<AudioManager>().PlayClip("WinBg");
+            Invoke("BackToMenu", 15f);
         }
     }
+
+    void BackToMenu() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(0);
+    }
+
+    float[] dirs = {
+        -0.2f, 0.2f, 0, -0.1f, 0.1f, -0.3f, 0.3f, -0.4f, 0.4f,
+    };
 
     void FixedUpdate()
     {
@@ -157,6 +177,8 @@ public class PlayerControllerScript : MonoBehaviour
 
          Vector3 moveDirection = ((transform.right * x) + (transform.forward * z)).normalized * speed;
 
+
+
          Rigidbody playerBody = GetComponent<Rigidbody>();
         // playerBody.MovePosition(transform.position + moveDirection);
 
@@ -164,29 +186,32 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (!isGrounded)
         {
+            float airMultiplier = 0.9f;
+            moveDirection = new Vector3(moveDirection.x * airMultiplier, moveDirection.y, moveDirection.z * airMultiplier);
+
             if (moveDirection.x == 0)
                 moveDirection.x = playerBody.velocity.x / 1.005f;
             if (moveDirection.z == 0)
                 moveDirection.z = playerBody.velocity.z / 1.005f;
+ 
         }
 
-        var controlledVelocity = playerBody.velocity;
-        controlledVelocity.x = Mathf.Clamp(controlledVelocity.x, -speed, speed);
-        controlledVelocity.z = Mathf.Clamp(controlledVelocity.z, -speed, speed);
+     
+            var controlledVelocity = playerBody.velocity;
 
+            controlledVelocity.x = Mathf.Clamp(controlledVelocity.x, -speed, speed);
+            controlledVelocity.z = Mathf.Clamp(controlledVelocity.z, -speed, speed);
 
-        var requiredVelocity = moveDirection - controlledVelocity;
+            var requiredVelocity = moveDirection - controlledVelocity;
 
-
-       // if ((x != 0 || isGrounded) && (playerBody.velocity.x < speed && playerBody.velocity.x > -speed))
+            // if ((x != 0 || isGrounded) && (playerBody.velocity.x < speed && playerBody.velocity.x > -speed))
             requiredVelocity.x = Mathf.Clamp(requiredVelocity.x, -speed, speed);
-       // if ((z != 0 || isGrounded) && (playerBody.velocity.z < speed && playerBody.velocity.z > -speed))
+            // if ((z != 0 || isGrounded) && (playerBody.velocity.z < speed && playerBody.velocity.z > -speed))
             requiredVelocity.z = Mathf.Clamp(requiredVelocity.z, -speed, speed);
-            
-         requiredVelocity.y = 0;
 
-         playerBody.AddForce(requiredVelocity, ForceMode.VelocityChange);
+            requiredVelocity.y = 0;
 
+            playerBody.AddForce(requiredVelocity, ForceMode.VelocityChange);
 
 
         if (!isGrounded)
@@ -208,8 +233,9 @@ public class PlayerControllerScript : MonoBehaviour
         transform.Find("Top").gameObject.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
 
+        
 
-      if (jump && playerBody != null && isGrounded)
+        if (jump && playerBody != null && isGrounded)
         {
             Jump(jumpForce, ForceMode.VelocityChange);
            // playerBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
@@ -219,6 +245,18 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
 
+       updateGrounded();
+    }
+
+    void updateGrounded()
+    {
+        for (int i = 0; i < dirs.Length; i++)
+        {
+            Vector3 dir = new Vector3(dirs[i], 0, 0);
+            isGrounded = Physics.Raycast(transform.position, Vector3.down + dir, distanceToGround + 0.5f);
+            if (isGrounded)
+                break;
+        }
     }
 
     public void Jump(float jumpForce, ForceMode forceMode)
@@ -233,19 +271,21 @@ public class PlayerControllerScript : MonoBehaviour
         playerBody.AddForce(Vector3.up * jumpForce, forceMode);
         FindObjectOfType<SoundEffect>().jump.Play();
     }
- 
+
+
+
+
     private void OnCollisionEnter(Collision collision)
     {
 
-
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.5f);
-
+     
+        updateGrounded();
 
         if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets"))
         {
             EnemyDamage(20);
         }
-        if (collision.gameObject.CompareTag("Poison") && companion.shieldPlayer == false)
+        if (collision.gameObject.CompareTag("Poison") /*&& companion.shieldPlayer == false*/)
         {
             ActivatePoison();
             Destroy(collision.gameObject);

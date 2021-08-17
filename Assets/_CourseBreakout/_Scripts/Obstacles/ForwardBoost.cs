@@ -13,8 +13,9 @@ public class ForwardBoost : MonoBehaviour
         Rigidbody rb = forwardboostplatform.GetComponent<Rigidbody>();
 
         
-       rb.velocity += new Vector3(0, 0, forwardboostspeed);
+      // rb.velocity += new Vector3(0, 0, forwardboostspeed);
         //rb.AddForce(Vector3.forward * forwardboostspeed);
+         rb.AddForce(Vector3.forward * forwardboostspeed, ForceMode.VelocityChange);
 
     }
 }
