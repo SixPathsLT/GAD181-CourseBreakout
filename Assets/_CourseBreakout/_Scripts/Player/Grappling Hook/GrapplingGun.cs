@@ -48,7 +48,7 @@ public class GrapplingGun : MonoBehaviour
      
 
         RaycastHit hit;
-        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable) && hit.collider.isTrigger == false)
+        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable) && hit.collider.isTrigger == false && !hit.collider.CompareTag("BombBody")
         {
             grapplingHook.SetUsingAbility(true);
 

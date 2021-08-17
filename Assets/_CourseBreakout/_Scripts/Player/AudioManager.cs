@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        source.loop = true;
         //source = gameObject.AddComponent<AudioSource>();
        // source.volume = 0.188f;
     }
