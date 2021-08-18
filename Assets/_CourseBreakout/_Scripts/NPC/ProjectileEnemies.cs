@@ -43,7 +43,7 @@ public class ProjectileEnemies : MonoBehaviour
     public void AttackPlayer() 
     {
         transform.LookAt(player);
-        if(!isAttacking)
+        if (!isAttacking)
         {
            if (shootingVFX != null)
                 shootingVFX.Play();
@@ -55,6 +55,7 @@ public class ProjectileEnemies : MonoBehaviour
 
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+        transform.Rotate(90, 0, 0, Space.Self);
     }
 
 

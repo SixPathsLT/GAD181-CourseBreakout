@@ -41,6 +41,7 @@ public class PlayerCheckpoint : MonoBehaviour
         player.GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
         gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
         player.GetComponent<PlayerControllerScript>().yRotation = 0;
+        player.GetComponent<PlayerControllerScript>().playerHealth = 300f;
         Debug.Log("Checkpoint Active");
     }
 } 

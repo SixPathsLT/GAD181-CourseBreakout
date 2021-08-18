@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,8 @@ using UnityEngine.UI;
 public class PlayerControllerScript : MonoBehaviour
 {
 
-    bool inTutorial = true;
+    [HideInInspector]
+    public bool inTutorial = true;
 
     public Camera fps;
     public int range;
@@ -15,6 +17,7 @@ public class PlayerControllerScript : MonoBehaviour
     public float gravity = 8f;
     public float playerHealth = 300;
     PlayerCheckpoint relive;
+    public Image lowHealthImage;
 
     public ParticleSystem muzzleFlash;
     private Light muzzleLight;
@@ -55,6 +58,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     public int score;
 
+    float healthWarnTimer = 0f;
+
 
     KeyCode[] inventoryKeys = {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
@@ -76,7 +81,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
-        Invoke("EndTutorial", 13f);
+        Invoke("EndTutorial", 14f);
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
@@ -105,10 +110,15 @@ public class PlayerControllerScript : MonoBehaviour
         FindObjectOfType<AudioManager>().PlayClip("GameBg");
     }
 
+
     void Update()
     {
-        if (inTutorial)
+        
+
+            if (inTutorial)
             return;
+
+        WarnLowHealthHUD();
 
         //inventory keys
         for (int i =0; i < inventoryKeys.Length; i++) {
@@ -117,6 +127,8 @@ public class PlayerControllerScript : MonoBehaviour
             if (Input.GetKeyDown(keyCode))
                 inventoryManager.SelectItem(i);
         }
+
+       
 
 
 
@@ -149,6 +161,20 @@ public class PlayerControllerScript : MonoBehaviour
             FindObjectOfType<AudioManager>().PlayClip("WinBg");
             Invoke("BackToMenu", 15f);
         }
+    }
+
+    private void WarnLowHealthHUD() {
+        if (playerHealth < 150f) {
+            lowHealthImage.gameObject.SetActive(true);
+             healthWarnTimer += Time.deltaTime;
+            if (healthWarnTimer < 0.8f)
+                lowHealthImage.CrossFadeColor(new Color32(255, 255, 255, 10), 0.8f, true, true);
+            else if (healthWarnTimer < 2f)
+                lowHealthImage.CrossFadeColor(new Color32(255, 255, 255, 255), 0.8f, true, true);
+            else
+                healthWarnTimer = 0;
+        } else if (lowHealthImage.IsActive())
+            lowHealthImage.gameObject.SetActive(false);
     }
 
     void BackToMenu() {
