@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCheckpoint : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerCheckpoint : MonoBehaviour
     public ParticleSystem HealthVFX2;
     public ParticleSystem HealthVFX3;
     
+    public GameObject livesRemaining;
 
     void Start()
     { 
@@ -35,15 +37,31 @@ public class PlayerCheckpoint : MonoBehaviour
         }
     }
 
-    public void Respawn() 
-    {
+    public void Respawn() {
+
         GameObject player = GameObject.FindWithTag("Player");
+
+        PlayerControllerScript playerController = player.GetComponent<PlayerControllerScript>();
+
         player.GetComponent<Rigidbody>().velocity = new Vector2(0, 0);
         gameObject.transform.position = spawnPoint + new Vector3(0, 1, 0);
-        player.GetComponent<PlayerControllerScript>().yRotation = 0;
-        player.GetComponent<PlayerControllerScript>().playerData.ResetHealth();
-        player.GetComponent<PlayerControllerScript>().grappleHook.GetComponentInChildren<GrapplingGun>().StopGrapple();
-        player.GetComponent<PlayerControllerScript>().grappleHook.GetComponent<Item>().charges = 100f;
+        playerController.yRotation = 0;
+        playerController.playerData.ResetHealth();
+        playerController.grappleHook.GetComponentInChildren<GrapplingGun>().StopGrapple();
+        playerController.grappleHook.GetComponent<Item>().charges = 100f;
+        playerController.playerData.remainingLives--;
+
+        Transform heartTransform = livesRemaining.transform.GetChild(playerController.playerData.remainingLives);
+
+        if (heartTransform != null)
+            heartTransform.gameObject.GetComponent<Image>().CrossFadeColor(new Color32(85, 85, 85, 255), 0.7f, true, false);
+
+        if (playerController.playerData.remainingLives < 1) {
+            playerController.BackToMenu();
+            return;
+        }
+
+
 
         Debug.Log("Checkpoint Active");
     }

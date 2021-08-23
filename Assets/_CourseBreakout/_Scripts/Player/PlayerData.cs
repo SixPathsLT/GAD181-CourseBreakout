@@ -9,9 +9,13 @@ public class PlayerData : ScriptableObject
     public float maxHealth = 200f;
     public float health;
 
-    void Start()
+    public int maxLives = 5;
+    public int remainingLives;
+
+   public void Start()
     {
         health = maxHealth;
+        remainingLives = maxLives;
     }
 
     internal void ResetHealth()

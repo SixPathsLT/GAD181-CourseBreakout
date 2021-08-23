@@ -74,6 +74,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Start()
     {
+        playerData.Start();
+
         notifications = GameObject.FindObjectOfType<NotificationsManager>();
         inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
 
@@ -85,7 +87,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
-        Invoke("EndTutorial", 1f); // original is 14
+        Invoke("EndTutorial", 14f); // original is 14
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
@@ -151,8 +153,6 @@ public class PlayerControllerScript : MonoBehaviour
                 inventoryManager.SelectItem(i);
         }
 
-       
-
 
 
         if (Input.GetButtonDown("Fire1"))
@@ -200,7 +200,7 @@ public class PlayerControllerScript : MonoBehaviour
             lowHealthImage.gameObject.SetActive(false);
     }
 
-    void BackToMenu() {
+    public void BackToMenu() {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
