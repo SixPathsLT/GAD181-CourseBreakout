@@ -53,7 +53,7 @@ public class Companion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+       /* if (Input.GetKeyDown(KeyCode.F))
         {
             ActivateShield();
         }
@@ -61,7 +61,7 @@ public class Companion : MonoBehaviour
       if (Input.GetKey(KeyCode.H))
       {
             ActivateHeal();
-      }
+      }*/
         CompHeal();
         LookStraight();
 

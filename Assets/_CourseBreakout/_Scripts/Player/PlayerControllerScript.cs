@@ -96,7 +96,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
 
-        SetDefaultHelpText();
+       // SetDefaultHelpText();
     }
 
     void EndTutorial() {
