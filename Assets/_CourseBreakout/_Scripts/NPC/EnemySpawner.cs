@@ -11,12 +11,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float range;
     void Start()
     {
-        dist = Vector3.Distance(transform.position, player.position);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        dist = Vector3.Distance(transform.position, player.position);
         if (dist <= range)
         {
             transform.LookAt(player);
