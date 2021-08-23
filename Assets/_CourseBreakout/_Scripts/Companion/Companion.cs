@@ -57,13 +57,13 @@ public class Companion : MonoBehaviour
         {
             ActivateShield();
         }
-        Shield();
       if (Input.GetKey(KeyCode.H))
       {
             ActivateHeal();
       }*/
         CompHeal();
         LookStraight();
+        Shield();
 
         otherTimer += Time.deltaTime;
         if (otherTimer <= 1) 
