@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class PlayerControllerScript : MonoBehaviour
 {
 
+
+    public PlayerData playerData;
+
     [HideInInspector]
     public bool inTutorial = true;
 
@@ -15,7 +18,6 @@ public class PlayerControllerScript : MonoBehaviour
     public int range;
 
     public float gravity = 8f;
-    public float playerHealth = 300;
     PlayerCheckpoint relive;
     public Image lowHealthImage;
 
@@ -67,6 +69,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     NotificationsManager notifications;
 
+   public Text helpText;
+    bool toggleHelpText;
 
     void Start()
     {
@@ -90,6 +94,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
 
+        SetDefaultHelpText();
     }
 
     void EndTutorial() {
@@ -110,13 +115,31 @@ public class PlayerControllerScript : MonoBehaviour
         FindObjectOfType<AudioManager>().PlayClip("GameBg");
     }
 
-
-    void Update()
+    void SetDefaultHelpText()
     {
-        
+        helpText.text = "Move: WASD \n" +
+        "Jump: Space Bar \n" +
+        "Interact: E \n" +
+        "Shoot: Left Click \n" +
+        "Use Selected Ability: Right Click \n" +
+        "Select Ability with keys: 1, 2, 3, 4";
+    }
 
-            if (inTutorial)
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.H)) {
+            toggleHelpText = !toggleHelpText;
+
+            if (!toggleHelpText)
+                helpText.text = "Press H for Help";
+            else 
+                SetDefaultHelpText();
+        }
+
+
+        if (inTutorial)
             return;
+
 
         WarnLowHealthHUD();
 
@@ -145,11 +168,10 @@ public class PlayerControllerScript : MonoBehaviour
         }
         timer += Time.deltaTime;
        
-        if (playerHealth <= 0) 
+        if (playerData.health <= 0) 
         {
            //GetComponent<PlayerCheckpoint>().Respawn();
            relive.Respawn();
-           playerHealth = 300;
         }
         PoisonPlayer();
        
@@ -162,9 +184,10 @@ public class PlayerControllerScript : MonoBehaviour
             Invoke("BackToMenu", 15f);
         }
     }
+    
 
     private void WarnLowHealthHUD() {
-        if (playerHealth < 150f) {
+        if (playerData.health < playerData.maxHealth / 2) {
             lowHealthImage.gameObject.SetActive(true);
              healthWarnTimer += Time.deltaTime;
             if (healthWarnTimer < 0.8f)
@@ -184,7 +207,7 @@ public class PlayerControllerScript : MonoBehaviour
     }
 
     float[] dirs = {
-        -0.2f, 0.2f, 0, -0.1f, 0.1f, -0.3f, 0.3f, -0.4f, 0.4f,
+        -0.2f, 0.2f, 0, -0.1f, 0.1f, -0.3f, 0.3f
     };
 
     void FixedUpdate()
@@ -212,7 +235,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (!isGrounded)
         {
-            float airMultiplier = 0.9f;
+            float airMultiplier = 0.8f;
             moveDirection = new Vector3(moveDirection.x * airMultiplier, moveDirection.y, moveDirection.z * airMultiplier);
 
             if (moveDirection.x == 0)
@@ -271,11 +294,13 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
 
-       updateGrounded();
     }
 
     void updateGrounded()
     {
+        if (isGrounded)
+            return;
+
         for (int i = 0; i < dirs.Length; i++)
         {
             Vector3 dir = new Vector3(dirs[i], 0, 0);
@@ -299,12 +324,14 @@ public class PlayerControllerScript : MonoBehaviour
     }
 
 
+    private void OnCollisionStay(Collision collision)
+    {
+        updateGrounded();
+    }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-
-     
         updateGrounded();
 
         if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets"))
@@ -319,7 +346,7 @@ public class PlayerControllerScript : MonoBehaviour
     }
     public void EnemyDamage(float amount)
     {
-        playerHealth -= amount;
+        playerData.health -= amount;
     }
    // Everything below this is for the Poison Effect
     void ActivatePoison()
@@ -331,7 +358,7 @@ public class PlayerControllerScript : MonoBehaviour
     {
         if (isPoisoned)
         {
-            playerHealth -= 0.2f;
+            playerData.health -= 0.2f;
             PoisonWarning.gameObject.SetActive(true);
         }
     }
@@ -345,19 +372,19 @@ public class PlayerControllerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HealthKit"))
         {
-            playerHealth += 50f;
+            playerData.health += 50f;
             Destroy(other.gameObject);
             HealthVFX.Play();
         }
         if (other.gameObject.CompareTag("HealthKit2"))
         {
-            playerHealth += 50f;
+            playerData.health += 50f;
             Destroy(other.gameObject);
             HealthVFX2.Play();
         }
         if (other.gameObject.CompareTag("HealthKit3"))
         {
-            playerHealth += 50f;
+            playerData.health += 50f;
             Destroy(other.gameObject);
             HealthVFX3.Play();
         }

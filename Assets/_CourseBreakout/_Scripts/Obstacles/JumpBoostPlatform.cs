@@ -13,6 +13,7 @@ public class JumpBoostPlatform : MonoBehaviour
         Rigidbody rb = jumpboostplatform.GetComponent<Rigidbody>();
         // rb.AddForce(Vector3.up * jumpboostheight);
 
+        
         if (collision.collider.CompareTag("Player"))
         {
            collision.collider.gameObject.GetComponent<PlayerControllerScript>().Jump(jumpboostheight, ForceMode.Force);

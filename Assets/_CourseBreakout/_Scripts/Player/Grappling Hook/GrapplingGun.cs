@@ -9,14 +9,15 @@ public class GrapplingGun : MonoBehaviour
 
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
-    private float maxDistance = 200f;
+    private float maxDistance = 100f;
     private SpringJoint joint;
+    
 
     [SerializeField] float spring;
     [SerializeField] float damper;
     [SerializeField] float massScale;
 
-    Item grapplingHook;
+    public Item grapplingHook;
 
     GameObject hitPointObject;
 
@@ -61,9 +62,12 @@ public class GrapplingGun : MonoBehaviour
 
             float distanceFromPoint = Vector3.Distance(player.position, hitPointObject.transform.position);
 
+
             //The distance grapple will try to keep from grapple point. 
-          // joint.maxDistance = distanceFromPoint * 0.8f;
-           // joint.minDistance = distanceFromPoint * 0.25f;
+             joint.maxDistance = distanceFromPoint *  0.25f;
+            joint.minDistance = distanceFromPoint * 0.4f;// 0.8f;
+
+
 
             //Adjust these values to fit gameplay style.
 
@@ -109,10 +113,20 @@ public class GrapplingGun : MonoBehaviour
        
         grapplingHook.ReduceCharges();
 
+        bool hasControlsDown = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
 
-       currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, hitPointObject.transform.position, Time.deltaTime * 8f);
+       if (hasControlsDown) {
+            joint.spring = spring;
+            joint.damper = damper;
+            joint.massScale = damper;
+        } else {
+            joint.spring /= 10;
+            joint.damper /= 10;
+            joint.massScale /= 10;
+        }
 
-      
+        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, hitPointObject.transform.position, Time.deltaTime * 8f);
+
 
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);

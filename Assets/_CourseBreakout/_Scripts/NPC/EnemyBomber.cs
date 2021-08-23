@@ -77,7 +77,7 @@ public class EnemyBomber : MonoBehaviour
                 explosionVFX.Play();
                 if (distance <= explodeRadius && GameObject.Find("Companion").GetComponent<Companion>().shieldPlayer == false)
                 {               
-                     GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerScript>().playerHealth -= 10;
+                     GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerScript>().playerData.health -= 10;
                 }
                 Destroy(transform.gameObject);
             }

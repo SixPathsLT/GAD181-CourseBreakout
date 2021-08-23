@@ -12,20 +12,18 @@ public class AudioManager : MonoBehaviour
         source = GetComponent<AudioSource>();
         source.loop = true;
         //source = gameObject.AddComponent<AudioSource>();
-       // source.volume = 0.188f;
+        //source.volume = 0.188f;
     }
 
 
     public void PlayClip(string name) {
         bool foundClip = false;
 
-        foreach (var clip in clips)
-        {
+        foreach (var clip in clips) {
             if (clip == null)
                 continue;
 
-            if (clip.name.Equals(name))
-            {
+            if (clip.name.Equals(name)) {
                 foundClip = true;
                 source.clip = clip;
                 source.Play();

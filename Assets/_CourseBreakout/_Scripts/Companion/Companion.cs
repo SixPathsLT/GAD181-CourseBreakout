@@ -117,12 +117,12 @@ public class Companion : MonoBehaviour
     {
         if (isHealing)
         {
-            player.GetComponent<PlayerControllerScript>().playerHealth += 0.5f;
+            player.GetComponent<PlayerControllerScript>().playerData.health += 0.5f;
             Invoke(nameof(StopHeal), 4);
             transform.Rotate(new Vector3(0, 130, 0) * healSpinSpeed * Time.deltaTime);
-            if (player.GetComponent<PlayerControllerScript>().playerHealth >= 300) 
+            if (player.GetComponent<PlayerControllerScript>().playerData.health > player.GetComponent<PlayerControllerScript>().playerData.maxHealth) 
             {
-                player.GetComponent<PlayerControllerScript>().playerHealth = 300;
+                player.GetComponent<PlayerControllerScript>().playerData.ResetHealth();
             }
         }
     }

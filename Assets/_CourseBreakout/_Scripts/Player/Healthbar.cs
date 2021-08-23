@@ -7,7 +7,6 @@ public class Healthbar : MonoBehaviour
 {
     private Image HealthBar;
     public float CurrentHealth;
-    private float Maxhealth = 300;
    
     PlayerControllerScript Player;
     
@@ -29,21 +28,23 @@ public class Healthbar : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        CurrentHealth = Player.playerHealth;
-        HealthBar.fillAmount = CurrentHealth / Maxhealth;
-        if (CurrentHealth <= 200)
-        {
-            healthWarn.enabled = true;
-        }
-        if (CurrentHealth >= 200)
-        {
-            healthWarn.enabled = false;
-        }
-        if (CurrentHealth <= 100)
+        CurrentHealth = Player.playerData.health;
+        HealthBar.fillAmount = CurrentHealth / Player.playerData.maxHealth;
+        /* if (CurrentHealth <= 200)
+         {
+             healthWarn.enabled = true;
+         }
+         if (CurrentHealth >= 200)
+         {
+             healthWarn.enabled = false;
+         }*
+         if (CurrentHealth <= 100)*/
+        if (CurrentHealth <= Player.playerData.maxHealth / 2)
         {
             Warning();
            // healthWarn.enabled = false;
-        }
+        } else if (healthWarn.enabled)
+            healthWarn.enabled = false;
     }
     public void Warning() 
     {
