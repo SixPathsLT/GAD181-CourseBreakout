@@ -37,7 +37,7 @@ public class AbilitiesManager : MonoBehaviour
             return;
         
         switch (slot.itemName.text) {
-            case "Grappling Hook":
+            case "Grapple Hook":
                 currentAbility = Ability.GRAPPLING_HOOK;
                 break;
             case "Heal":
