@@ -67,10 +67,10 @@ public class AbilitiesManager : MonoBehaviour
                     break;
                 case Ability.BOOSTED_JUMP:
                     if (UseFullCharge(slot)) {
-                        player.jumpForce *= 1.5f;
-                        player.maxHeight *= 1.5f;
-                        GameObject.FindObjectOfType<NotificationsManager>().SendNotification("Your jump has been boosted for 15 seconds!");
-                        Invoke("ResetBoostedJump", 15);
+                        player.jumpForce *= 1.6f;
+                        player.maxHeight *= 1.6f;
+                        GameObject.FindObjectOfType<NotificationsManager>().SendNotification("Your jump has been boosted for 10 seconds!");
+                        Invoke("ResetBoostedJump", 10);
                     }             
                     break;
             }

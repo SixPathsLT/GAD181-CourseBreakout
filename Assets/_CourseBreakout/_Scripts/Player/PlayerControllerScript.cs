@@ -62,6 +62,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     float healthWarnTimer = 0f;
 
+    private bool isOnSpeedPlatform = false;
+
 
     KeyCode[] inventoryKeys = {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4
@@ -87,7 +89,7 @@ public class PlayerControllerScript : MonoBehaviour
         notifications.SendNotification("Welcome to Course Breakout!", 3);
         notifications.SendNotification("Follow your companion's instructions.", 3, 4);
 
-        Invoke("EndTutorial", 1f); // original is 14
+        Invoke("EndTutorial", 14f); // original is 14
 
         relive = GetComponent<PlayerCheckpoint>();
         //scores = GetComponent<BossRadios>();
@@ -111,7 +113,7 @@ public class PlayerControllerScript : MonoBehaviour
         
         notifications.SendNotification("Go to the vents and grab the green key.", 4);
         notifications.SendNotification("Hold Right Click to use your ability.", 4, 6);
-        notifications.SendNotification("Use 1-4 keys to switch abilities.", 4, 10);
+        notifications.SendNotification("Use 1-4 keys to switch abilities.", 4, 13);
         notifications.SendNotification("Press E to open the door.", 4, 25);
 
         FindObjectOfType<AudioManager>().PlayClip("GameBg");
@@ -245,6 +247,9 @@ public class PlayerControllerScript : MonoBehaviour
  
         }
 
+        if (isOnSpeedPlatform)
+            moveDirection.z = 0;
+
      
             var controlledVelocity = playerBody.velocity;
 
@@ -284,7 +289,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         
 
-        if (jump && playerBody != null && isGrounded)
+        if (jump && playerBody != null && isGrounded && !isOnSpeedPlatform)
         {
             Jump(jumpForce, ForceMode.VelocityChange);
            // playerBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
@@ -327,12 +332,23 @@ public class PlayerControllerScript : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         updateGrounded();
+
+
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        isOnSpeedPlatform = false;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         updateGrounded();
+
+        if (collision.collider.CompareTag("SpeedBoost"))
+        {
+            isOnSpeedPlatform = true;
+        }
 
         if (collision.gameObject.CompareTag("EnemyOrProjectilesOrBullets"))
         {

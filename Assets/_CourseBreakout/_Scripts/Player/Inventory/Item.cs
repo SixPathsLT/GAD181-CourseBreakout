@@ -32,7 +32,7 @@ public class Item : MonoBehaviour
 
     public void IncreaseCharges()
     {
-        charges += Time.deltaTime * 5f;
+        charges += Time.deltaTime * 2.5f;
         if (charges > 100)
             charges = 100;
     }
