@@ -22,5 +22,7 @@ public class RotateGun : MonoBehaviour
         }
    
         transform.rotation = Quaternion.Lerp(a: transform.rotation, b: desiredRotation, t: Time.deltaTime * rotationSpeed);
+
+       
     }
 }
